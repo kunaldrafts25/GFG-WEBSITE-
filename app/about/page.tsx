@@ -8,7 +8,7 @@ import { MemberCard } from "@/components/member-card"
 
 export default function AboutPage() {
   return (
-    <main className="container py-12 mt-20">
+    <main className="container py-12 mt-20 px-6 mx-auto">
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

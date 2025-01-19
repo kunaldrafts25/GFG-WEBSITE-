@@ -114,7 +114,7 @@ export default function EventsPage() {
   
 
   return (
-    <main className="container py-12 mt-20 ">
+    <main className="container py-12 mt-20 px-6 mx-auto ">
       {/* Upcoming Events Section */}
       <section className="mb-16">
         <h2 className="text-3xl font-semibold mb-8 text-green-600">Upcoming Events</h2>
