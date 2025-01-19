@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa"
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaGithub, FaWhatsapp, FaDiscord } from "react-icons/fa"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
@@ -42,20 +42,20 @@ export function Footer() {
             </ul>
             <h3 className="text-lg font-semibold text-white mb-4">Connect With Us</h3>
             <div className="flex space-x-4 mb-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaFacebook size={24} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaTwitter size={24} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaInstagram size={24} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaLinkedin size={24} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaGithub size={24} />
+            <a href="https://www.instagram.com/gfg_mitadt" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram className="text-3xl text-white hover:text-[#E5F2D2] transition-all" />
+            </a>
+            <a href="http://www.linkedin.com/in/gfgmitadt" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <FaLinkedin className="text-3xl text-white hover:text-[#E5F2D2] transition-all" />
+            </a>
+            <a href="https://chat.whatsapp.com/HkHoCm9Rfv6Cxgt4MOtm5K" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <FaWhatsapp className="text-3xl text-white hover:text-[#E5F2D2] transition-all" />
+            </a>
+            <a href="https://discord.gg/JCyKBXsh" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+              <FaDiscord className="text-3xl text-white hover:text-[#E5F2D2] transition-all" />
+            </a>
+            <a href="https://github.com/GeeksforGeeks-MITADT" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <FaGithub className="text-3xl text-white hover:text-[#E5F2D2] transition-all" />
               </a>
             </div>
             <p>MIT-ADT University, Pune</p>
