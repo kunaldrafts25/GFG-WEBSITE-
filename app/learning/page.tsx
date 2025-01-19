@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 
 export default function LearningPage() {
   return (
-    <main className="container py-12 mt-20 pl-10 ml-10">
+    <main className="container py-12 mt-20 mx-auto">
       <section className="mb-16 text-center">
         <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">Learning Resources</h1>
         <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
