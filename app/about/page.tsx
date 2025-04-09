@@ -159,7 +159,7 @@ const teams = {
     {
       name: "Madhur Patil",
       role: "President",
-      photo: "/placeholder.svg?height=400&width=400",
+      photo: "/public/Core/Dev.jpg",
       quote: "Leading with passion and innovation",
       linkedin: "https://linkedin.com/in/johndoe",
       instagram: "https://instagram.com/johndoe",
@@ -173,7 +173,7 @@ const teams = {
       instagram: "https://instagram.com/janesmith",
     },
     {
-      name: "Nidhi Phophaliya",
+      name: "Dadasaheb Bhosure",
       role: "Secretary",
       photo: "/placeholder.svg?height=400&width=400",
       quote: "Bringing clarity and focus to the team",
@@ -181,7 +181,7 @@ const teams = {
       instagram: "https://instagram.com/nidhiphophaliya",
     },
     {
-      name: "Piyush Chavan",
+      name: "Mizan Lakhani",
       role: "Treasurer",
       photo: "/placeholder.svg?height=400&width=400",
       quote: "Managing resources with precision and accountability",
@@ -364,14 +364,7 @@ const teams = {
       linkedin: "https://linkedin.com/in/rutujamakode",
       instagram: "https://instagram.com/rutujamakode",
     },
-    {
-      name: "Dadasaheb",
-      role: "Marketing Team Member",
-      photo: "/placeholder.svg?height=400&width=400",
-      quote: "Creativity in every campaign",
-      linkedin: "https://linkedin.com/in/dadasaheb",
-      instagram: "https://instagram.com/dadasaheb",
-    },
+    
     {
       name: "Varun",
       role: "Marketing Team Member",

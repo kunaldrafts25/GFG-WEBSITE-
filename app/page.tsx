@@ -1,10 +1,13 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import Link from 'next/link'
+import React, { useEffect,useState } from 'react'
 import { motion } from "framer-motion"
 import Image from 'next/image'
 import { FaArrowRight } from 'react-icons/fa'
 import LandingScroll from '../components/landing-scroll'
+
+
 
 const MembersIcon = () => (
   <svg className="text-gfgsc-green w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -74,9 +77,31 @@ const buttonHover = {
 }
 
 export default function Home() {
+  const [events, setEvents] = useState<any[]>([])
+
   useEffect(() => {
     window.onload = () => window.scrollTo(0, 0)
   }, [])
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/events`)
+        const data = await res.json()
+        setEvents(data)
+      } catch (err) {
+        console.error("Failed to fetch events:", err)
+      }
+    }
+
+    fetchEvents()
+  }, [])
+
+  const pastEvents = events.filter(event => {
+    const end = event.date?.split(" to ")[1] || event.date
+    return new Date(end) < new Date()
+  })
+
 
   return (
     <>
@@ -440,76 +465,29 @@ export default function Home() {
       </div>
 
       {/* Upcoming Events Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-100">Upcoming Events</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Hackathon 2024",
-                date: "March 15-16, 2024",
-                description: "48-hour coding challenge to build innovative solutions.",
-              },
-              {
-                title: "Tech Talk: AI in Healthcare",
-                date: "April 5, 2024",
-                description: "Learn about the latest AI applications in the healthcare industry.",
-              },
-              {
-                title: "Web Development Workshop",
-                date: "April 20, 2024",
-                description: "Hands-on workshop on modern web development techniques.",
-              },
-            ].map((event, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-transform hover:scale-105">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{event.title}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{event.date}</p>
-                <p className="text-gray-700 dark:text-gray-300">{event.description}</p>
-                <a href="#" className="mt-4 inline-block text-gfgsc-green hover:underline">Learn more</a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
+
+
 
       {/* Testimonials Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-100">What Our Members Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Atharva Patil",
-                role: "Founder President",
-                quote: "Joining GFG Student Chapter has been a game-changer for my coding skills and career prospects.",
-              },
-              {
-                name: "Kunal Taware",
-                role: "Ex-President",
-                quote: "The workshops and coding contests organized by GFG have significantly improved my problem-solving abilities.",
-              },
-              {
-                name: "Arpit Bansal",
-                role: "Ex-Techniocal Lead",
-                quote: "GFG Student Chapter provides an amazing platform to learn, collaborate, and grow as a tech enthusiast.",
-              },
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-                <p className="text-gray-700 dark:text-gray-300 mb-4">"{testimonial.quote}"</p>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-gfgsc-green rounded-full flex items-center justify-center text-white font-bold">
-                    {testimonial.name[0]}
-                  </div>
-                  <div className="ml-4">
-                    <p className="font-semibold text-gray-900 dark:text-gray-100">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+  <div className="container mx-auto px-4 text-center">
+    <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+      Want to Learn More?
+    </h2>
+    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+      Explore tutorials, coding challenges, and interview prep at GeeksforGeeks.
+    </p>
+    <a
+      href="https://www.geeksforgeeks.org"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block bg-gfgsc-green text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-800 transition"
+    >
+      Visit GeeksforGeeks
+    </a>
+  </div>
+</section>
     </>
   )
 }

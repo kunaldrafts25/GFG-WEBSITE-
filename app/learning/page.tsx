@@ -35,10 +35,12 @@ export default function LearningPage() {
                     </div>
                   ))}
                 </div>
-                <Button className="mt-4 w-full" variant="outline">
-                  Start Learning
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <a href="https://www.geeksforgeeks.org" target="_blank" rel="noopener noreferrer">
+                  <Button className="mt-4 w-full" variant="outline">
+                    Start Learning
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </a>
               </CardContent>
             </Card>
           ))}
@@ -53,7 +55,7 @@ export default function LearningPage() {
               <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{tutorial.title}</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{tutorial.author} • {tutorial.date}</p>
               <p className="text-gray-700 dark:text-gray-300 mb-4">{tutorial.description}</p>
-              <a href="#" className="text-gfgsc-green hover:underline">Read more</a>
+              <a href="https://www.geeksforgeeks.org" target="_blank" rel="noopener noreferrer" className="text-gfgsc-green hover:underline">Read more</a>
             </div>
           ))}
         </div>
@@ -65,11 +67,11 @@ export default function LearningPage() {
           {books.map((book, index) => (
             <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg">
               <div className="aspect-w-2 aspect-h-3 mb-4">
-                <img src={book.cover || "/placeholder.svg"} alt={book.title} className="object-cover rounded-md" />
+                <img src={book.cover} alt={book.title} className="object-cover rounded-md" />
               </div>
               <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">{book.title}</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{book.author}</p>
-              <a href="#" className="text-gfgsc-green hover:underline">View on Amazon</a>
+              <a href="https://www.geeksforgeeks.org" target="_blank" rel="noopener noreferrer" className="text-gfgsc-green hover:underline">View on Amazon</a>
             </div>
           ))}
         </div>
@@ -136,22 +138,21 @@ const books = [
   {
     title: "Clean Code",
     author: "Robert C. Martin",
-    cover: "/placeholder.svg?height=300&width=200",
+    cover: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
   },
   {
     title: "Design Patterns",
     author: "Erich Gamma et al.",
-    cover: "/placeholder.svg?height=300&width=200",
+    cover: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
   },
   {
     title: "The Pragmatic Programmer",
     author: "Andrew Hunt & David Thomas",
-    cover: "/placeholder.svg?height=300&width=200",
+    cover: "https://images.unsplash.com/photo-1529070538774-1843cb3265df",
   },
   {
     title: "Cracking the Coding Interview",
     author: "Gayle Laakmann McDowell",
-    cover: "/placeholder.svg?height=300&width=200",
+    cover: "https://images.unsplash.com/photo-1532619187600-3d4dd1c0ab87",
   },
 ]
-
