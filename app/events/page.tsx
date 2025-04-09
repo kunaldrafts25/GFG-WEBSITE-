@@ -17,14 +17,15 @@ export default function EventsPage() {
       try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/events`)
         const data = await res.json()
-        setEvents(data)
+        setEvents(Array.isArray(data) ? data : [])
       } catch (err) {
         console.error("Failed to fetch events:", err)
       }
     }
-
+  
     fetchEvents()
   }, [])
+  
 
   const toggleEvent = (eventId: string) => {
     setExpandedEvent(expandedEvent === eventId ? null : eventId)
