@@ -310,7 +310,7 @@ const teams = {
     {
       name: "Shloka Pai",
       role: "Events Management Team",
-      photo: "/Events Management Team/shloka.png",
+      photo: "/Event Management Team/shloka.png",
       quote: "Organizing with attention to detail",
       linkedin: "https://linkedin.com/in/shlokapai",
       instagram: "https://instagram.com/shlokapai",
@@ -318,7 +318,7 @@ const teams = {
     {
       name: "Kanak Lingwat",
       role: "Events Management Team",
-      photo: "/Events Management Team/Kanak Lingwat_.jpg",
+      photo: "/Event Management Team/Kanak Lingwat_.jpg",
       quote: "Creating seamless event experiences",
       linkedin: "https://linkedin.com/in/kanaklingwat",
       instagram: "https://instagram.com/kanaklingwat",
@@ -326,7 +326,7 @@ const teams = {
     {
       name: "Shivam Sharma",
       role: "Events Management Team",
-      photo: "/Events Management Team/Shivam Sharma_.jpg",
+      photo: "/Event Management Team/Shivam Sharma_.jpg",
       quote: "Bringing creativity and structure to events",
       linkedin: "https://linkedin.com/in/shivamsharma",
       instagram: "https://instagram.com/shivamsharma",
@@ -334,7 +334,7 @@ const teams = {
     {
       name: "Raghavendra Dwivedi",
       role: "Events Management Team",
-      photo: "/Events Management Team/Raghavendra Dwivedi_.jpg",
+      photo: "/Event Management Team/Raghavendra Dwivedi_.jpg",
       quote: "Mastering the art of event coordination",
       linkedin: "https://linkedin.com/in/raghavendradowivedi",
       instagram: "https://instagram.com/raghavendradowivedi",
@@ -342,7 +342,7 @@ const teams = {
     {
       name: "Taresh Chabukswar",
       role: "Events Management Team",
-      photo: "/Events Management Team/Taresh Chabukswar.jpg",
+      photo: "/Event Management Team/Taresh Chabukswar.jpg",
       quote: "Delivering exceptional event experiences",
       linkedin: "https://linkedin.com/in/tareshchabukswar",
       instagram: "https://instagram.com/tareshchabukswar",
@@ -350,7 +350,7 @@ const teams = {
     {
       name: "Suvesha Khan",
       role: "Events Management Team",
-      photo: "/Events Management Team/Suvesha K.jpg",
+      photo: "/Event Management Team/Suvesha K.jpg",
       quote: "Making every event memorable",
       linkedin: "https://linkedin.com/in/suveshakhan",
       instagram: "https://instagram.com/suveshakhan",
@@ -369,7 +369,7 @@ const teams = {
     {
       name: "Varun",
       role: "Marketing Team Member",
-      photo: "/marketing team/Varun.jpg",
+      photo: "/Marketing Team/Varun.jpg",
       quote: "Strategizing for maximum outreach",
       linkedin: "https://linkedin.com/in/varun",
       instagram: "https://instagram.com/varun",
@@ -377,7 +377,7 @@ const teams = {
     {
       name: "Shivam",
       role: "Marketing Team Member",
-      photo: "/marketing team/SHIVam.jpg",
+      photo: "/Marketing Team/SHIVam.jpg",
       quote: "Pushing the boundaries of creativity",
       linkedin: "https://linkedin.com/in/shivam",
       instagram: "https://instagram.com/shivam",
@@ -385,7 +385,7 @@ const teams = {
     {
       name: "Amish",
       role: "Marketing Team Member",
-      photo: "/marketing team/Amish Gupta_.webp",
+      photo: "/Marketing Team/Amish Gupta_.webp",
       quote: "Innovative marketing ideas that engage",
       linkedin: "https://linkedin.com/in/amish",
       instagram: "https://instagram.com/amish",
@@ -393,7 +393,7 @@ const teams = {
     {
       name: "Vaibhavi",
       role: "Marketing Team Member",
-      photo: "/marketing team/Vaibhavi.jpg",
+      photo: "/Marketing Team/Vaibhavi.jpg",
       quote: "Delivering brand excellence",
       linkedin: "https://linkedin.com/in/vaibhavi",
       instagram: "https://instagram.com/vaibhavi",
@@ -401,7 +401,7 @@ const teams = {
     {
       name: "Arnav",
       role: "Marketing Team Member",
-      photo: "/marketing team/Arnav Pattnaik_.jpg",
+      photo: "/Marketing Team/Arnav Pattnaik_.jpg",
       quote: "Amplifying brand presence with creativity",
       linkedin: "https://linkedin.com/in/arnav",
       instagram: "https://instagram.com/arnav",
@@ -437,7 +437,7 @@ const teams = {
     {
       name: "Prathm Shah",
       role: "Website Team Member",
-      photo: "/website team/Pratham Shah_.jpg",
+      photo: "/Website Team/Pratham Shah_.jpg",
       quote: "Engaging the audience with creative content",
       linkedin: "https://linkedin.com/in/kartiksharma",
       instagram: "https://instagram.com/kartiksharma",
@@ -445,7 +445,7 @@ const teams = {
     {
       name: "Meghraj Nair",
       role: "Website Team Member",
-      photo: "/website team/Meghraj Nair.jpg",
+      photo: "/Website Team/Meghraj Nair.jpg",
       quote: "Creating impact through social media",
       linkedin: "https://linkedin.com/in/tejasitkar",
       instagram: "https://instagram.com/tejasitkar",
@@ -453,7 +453,7 @@ const teams = {
     {
       name: "Saksham",
       role: "Website Team Member",
-      photo: "/website team/shaaz jiwani.png",
+      photo: "/Website Team/shaaz jiwani.png",
       quote: "Building community engagement",
       linkedin: "https://linkedin.com/in/saksham",
       instagram: "https://instagram.com/saksham",
