@@ -252,7 +252,7 @@ const teams = {
     {
       name: "Sanjog Bora",
       role: "Design Lead",
-      photo: "/Design Team/Sanjog.png",
+      photo: "/Design Team/sanjog.png",
       quote: "Creating designs that speak volumes",
       linkedin: "https://linkedin.com/in/sanjogbora",
       instagram: "https://instagram.com/sanjogbora",
@@ -310,7 +310,7 @@ const teams = {
     {
       name: "Shloka Pai",
       role: "Events Management Team",
-      photo: "/event management team/shloka.png",
+      photo: "/Events Management Team/shloka.png",
       quote: "Organizing with attention to detail",
       linkedin: "https://linkedin.com/in/shlokapai",
       instagram: "https://instagram.com/shlokapai",
@@ -318,7 +318,7 @@ const teams = {
     {
       name: "Kanak Lingwat",
       role: "Events Management Team",
-      photo: "/event management team/Kanak Lingwat_.jpg",
+      photo: "/Events Management Team/Kanak Lingwat_.jpg",
       quote: "Creating seamless event experiences",
       linkedin: "https://linkedin.com/in/kanaklingwat",
       instagram: "https://instagram.com/kanaklingwat",
@@ -326,7 +326,7 @@ const teams = {
     {
       name: "Shivam Sharma",
       role: "Events Management Team",
-      photo: "/event management team/Shivam Sharma_.jpg",
+      photo: "/Events Management Team/Shivam Sharma_.jpg",
       quote: "Bringing creativity and structure to events",
       linkedin: "https://linkedin.com/in/shivamsharma",
       instagram: "https://instagram.com/shivamsharma",
@@ -334,7 +334,7 @@ const teams = {
     {
       name: "Raghavendra Dwivedi",
       role: "Events Management Team",
-      photo: "/event management team/Raghavendra Dwivedi_.jpg",
+      photo: "/Events Management Team/Raghavendra Dwivedi_.jpg",
       quote: "Mastering the art of event coordination",
       linkedin: "https://linkedin.com/in/raghavendradowivedi",
       instagram: "https://instagram.com/raghavendradowivedi",
@@ -342,7 +342,7 @@ const teams = {
     {
       name: "Taresh Chabukswar",
       role: "Events Management Team",
-      photo: "/event management team/Taresh Chabukswar.jpg",
+      photo: "/Events Management Team/Taresh Chabukswar.jpg",
       quote: "Delivering exceptional event experiences",
       linkedin: "https://linkedin.com/in/tareshchabukswar",
       instagram: "https://instagram.com/tareshchabukswar",
@@ -350,7 +350,7 @@ const teams = {
     {
       name: "Suvesha Khan",
       role: "Events Management Team",
-      photo: "/event management team/Suvesha K.jpg",
+      photo: "/Events Management Team/Suvesha K.jpg",
       quote: "Making every event memorable",
       linkedin: "https://linkedin.com/in/suveshakhan",
       instagram: "https://instagram.com/suveshakhan",
