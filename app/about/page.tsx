@@ -310,7 +310,7 @@ const teams = {
     {
       name: "Shloka Pai",
       role: "Events Management Team",
-      photo: "/Event Management Team/shloka.png",
+      photo: "/Event Management Team/Shloka.png",
       quote: "Organizing with attention to detail",
       linkedin: "https://linkedin.com/in/shlokapai",
       instagram: "https://instagram.com/shlokapai",
@@ -437,7 +437,7 @@ const teams = {
     {
       name: "Prathm Shah",
       role: "Website Team Member",
-      photo: "/Website Team/Pratham Shah_.jpg",
+      photo: "/Website Team/Pratham Shah_.webp",
       quote: "Engaging the audience with creative content",
       linkedin: "https://linkedin.com/in/kartiksharma",
       instagram: "https://instagram.com/kartiksharma",
@@ -445,7 +445,7 @@ const teams = {
     {
       name: "Meghraj Nair",
       role: "Website Team Member",
-      photo: "/Website Team/Meghraj Nair.jpg",
+      photo: "/Website Team/Meghraj Nair.jpeg",
       quote: "Creating impact through social media",
       linkedin: "https://linkedin.com/in/tejasitkar",
       instagram: "https://instagram.com/tejasitkar",
@@ -453,11 +453,10 @@ const teams = {
     {
       name: "Saksham",
       role: "Website Team Member",
-      photo: "/Website Team/shaaz jiwani.png",
+      photo: "/Website Team/Shaaz Jiwani.png",
       quote: "Building community engagement",
       linkedin: "https://linkedin.com/in/saksham",
       instagram: "https://instagram.com/saksham",
     },
   ],
 }
-
