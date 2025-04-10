@@ -80,7 +80,8 @@ export default function AboutPage() {
       <section className="mb-16">
         <h2 className="mb-8 text-2xl font-bold">Our Teams</h2>
         <Tabs defaultValue="core" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6 mb-8">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-8">
+
             {Object.keys(teams).map((team) => (
               <TabsTrigger key={team} value={team} className="text-sm">
                 {team.charAt(0).toUpperCase() + team.slice(1)}
@@ -93,7 +94,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                className="pt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
               >
                 {members.map((member) => (
                   <MemberCard key={member.name} {...member} />
