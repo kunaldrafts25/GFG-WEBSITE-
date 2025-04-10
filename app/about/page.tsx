@@ -451,9 +451,9 @@ const teams = {
       instagram: "https://instagram.com/tejasitkar",
     },
     {
-      name: "Saksham",
+      name: "Shaaz Jiwani",
       role: "Website Team Member",
-      photo: "/Website Team/Shaaz Jiwani.png",
+      photo: "/Website Team/Shaaz Jiwani.PNG",
       quote: "Building community engagement",
       linkedin: "https://linkedin.com/in/saksham",
       instagram: "https://instagram.com/saksham",
