@@ -193,12 +193,16 @@ export default function EventsPage() {
       </section>
 
       {/* Past Events */}
-      <section>
-        <h2 className="text-3xl font-semibold mb-8 text-green-600">Past Events</h2>
-        {pastEvents.map(event => (
-          <EventCard key={event.id} event={event} isPast={true} />
-        ))}
-      </section>
+      {/* Past Events */}
+<section>
+  <h2 className="text-3xl font-semibold mb-8 text-green-600">Past Events</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {pastEvents.map(event => (
+      <EventCard key={event.id} event={event} isPast={true} />
+    ))}
+  </div>
+</section>
+
     </main>
   )
 }
