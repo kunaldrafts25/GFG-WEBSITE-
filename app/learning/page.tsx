@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 export default function LearningHub() {
   return (
-    <div className="min-h-screen bg-gray-50 mt-20">
+    <div className="min-h-screen bg-gray-50 mt-20 container py-12 px-6 mx-auto">
       {/* Header */}
       <header className="bg-white border-b">
         <div className="container px-4 py-8 mx-auto">
