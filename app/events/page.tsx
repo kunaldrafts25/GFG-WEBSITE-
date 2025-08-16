@@ -25,6 +25,7 @@ export default function EventsPage() {
   
     fetchEvents()
   }, [])
+  
 
   const toggleEvent = (eventId: string) => {
     setExpandedEvent(expandedEvent === eventId ? null : eventId)
