@@ -1,28 +1,36 @@
 let userConfig = undefined
 try {
-  userConfig = await import('./v0-user-next.config')
+  userConfig = (await import('./v0-user-next.config.mjs')).default
 } catch (e) {
   // ignore error
 }
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
-    unoptimized: true,
-    domains: ['source.unsplash.com'],
-
+    domains: [
+      'source.unsplash.com',
+      'hebbkx1anhila5yf.public.blob.vercel-storage.com',
+      'images.unsplash.com',
+      'via.placeholder.com'
+    ],
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  poweredByHeader: false,
 }
 
 mergeConfig(nextConfig, userConfig)
@@ -35,7 +43,8 @@ function mergeConfig(nextConfig, userConfig) {
   for (const key in userConfig) {
     if (
       typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
+      nextConfig[key] !== null &&
+      !Array.isArray(nextConfig[key]) 
     ) {
       nextConfig[key] = {
         ...nextConfig[key],
@@ -47,4 +56,14 @@ function mergeConfig(nextConfig, userConfig) {
   }
 }
 
-export default nextConfig
+let configToExport = nextConfig;
+
+if (process.env.ANALYZE === 'true') {
+  // Dynamically import and apply the bundle analyzer only when needed
+  const withBundleAnalyzer = (await import('@next/bundle-analyzer')).default({
+    enabled: true,
+  });
+  configToExport = withBundleAnalyzer(configToExport);
+}
+
+export default configToExport;

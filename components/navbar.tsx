@@ -13,11 +13,18 @@ export function Navbar() {
   const { theme, setTheme } = useTheme()
 
   return (
-    <nav className="fixed top-6 left-1/2 w-[calc(100%-2rem)] sm:w-[calc(100%-4rem)] max-w-[160rem] -translate-x-1/2 mx-auto px-6 md:px-10 py-3 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-[2.4rem] shadow-lg hover:shadow-xl transition-shadow duration-500 z-50">
+    <nav
+      id="main-navigation"
+      aria-label="Main navigation"
+      className="fixed top-6 left-1/2 w-[calc(100%-2rem)] sm:w-[calc(100%-4rem)] max-w-[160rem] -translate-x-1/2 mx-auto px-6 md:px-10 py-3 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-[2.4rem] shadow-lg hover:shadow-xl transition-shadow duration-500 z-50"
+    >
       <div className="flex items-center justify-between">
         {/* Left - Logo */}
         <div className="flex items-center">
-          <Link href="/" className="text-inherit no-underline">
+          <Link
+            href="/"
+            aria-label="GeeksforGeeks Student Chapter - Home"
+          >
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/GFG%20LOGO-PgT4Ea0lSd8pq4MapL0fLjAkZvB3G6.png"
               alt="GeeksforGeeks Student Chapter"
@@ -33,21 +40,27 @@ export function Navbar() {
         <div className="hidden md:flex space-x-6 text-gray-800 dark:text-gray-200">
           <Link
             href="/events"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
           >
             Events
           </Link>
           <Link
             href="/about"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
           >
             About
           </Link>
           <Link
             href="/learning"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
           >
             Learning
+          </Link>
+          <Link
+            href="/forge"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
+          >
+             GeekForge
           </Link>
         </div>
 
@@ -58,10 +71,11 @@ export function Navbar() {
               href="https://www.geeksforgeeks.org/problem-of-the-day"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-600 dark:text-green-400 hover:underline hover:bg-green-600 hover:text-white dark:hover:bg-green-500 dark:hover:text-gray-900 hover:rounded-full px-3 py-1 flex items-center space-x-2 transition-all duration-200"
+              className="text-green-600 dark:text-green-400 hover:underline hover:bg-green-600 hover:text-white dark:hover:bg-green-500 dark:hover:text-gray-900 hover:rounded-full px-3 py-1 flex items-center space-x-2 transition-all duration-200 focus:outline-none"
+              aria-label="GeeksforGeeks Problem of the Day (opens in new tab)"
             >
               <span>GFG POTD</span>
-              <FaArrowRight />
+              <FaArrowRight aria-hidden="true" />
             </a>
           </div>
 
@@ -80,6 +94,9 @@ export function Navbar() {
           <button
             className="md:hidden text-gray-800 dark:text-gray-200 focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-controls="mobile-menu"
           >
             <div className="w-6 h-6 flex flex-col justify-around">
               <span className={`block w-6 h-0.5 bg-current transform transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
@@ -92,37 +109,56 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
+        id="mobile-menu"
         className={`${
           isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         } md:hidden overflow-hidden transition-all duration-300`}
+        role="menu"
+        aria-hidden={!isMenuOpen}
       >
         <div className="flex flex-col space-y-4 mt-4 text-gray-800 dark:text-gray-200">
           <Link
             href="/events"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
+            role="menuitem"
+            onClick={() => setIsMenuOpen(false)}
           >
             Events
           </Link>
           <Link
             href="/about"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
+            role="menuitem"
+            onClick={() => setIsMenuOpen(false)}
           >
             About
           </Link>
           <Link
             href="/learning"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
+            role="menuitem"
+            onClick={() => setIsMenuOpen(false)}
           >
             Learning
+          </Link>
+          <Link
+            href="/forge"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
+            role="menuitem"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            The Forge
           </Link>
           <a
             href="https://www.geeksforgeeks.org/problem-of-the-day"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-600 dark:text-green-400 hover:underline hover:bg-green-600 hover:text-white dark:hover:bg-green-500 dark:hover:text-gray-900 hover:rounded-full px-3 py-1 flex items-center space-x-2 transition-all duration-200"
+            className="text-green-600 dark:text-green-400 hover:underline hover:bg-green-600 hover:text-white dark:hover:bg-green-500 dark:hover:text-gray-900 hover:rounded-full px-3 py-1 flex items-center space-x-2 transition-all duration-200 focus:outline-none"
+            role="menuitem"
+            aria-label="GeeksforGeeks Problem of the Day (opens in new tab)"
           >
             <span>GFG POTD</span>
-            <FaArrowRight />
+            <FaArrowRight aria-hidden="true" />
           </a>
         </div>
       </div>

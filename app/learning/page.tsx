@@ -1,187 +1,252 @@
+"use client"
+
 import Image from "next/image"
-import { ArrowRight, BookOpen, Code, Database, FileCode, Laptop, Lightbulb, MessageSquare } from "lucide-react"
+import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 
 export default function LearningHub() {
   return (
-    <div className="min-h-screen bg-gray-50 mt-20 container py-12 px-6 mx-auto">
+    <main className="container py-12 mt-20 px-6 mx-auto">
       {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container px-4 py-8 mx-auto">
-          <div className="grid gap-6 md:grid-cols-2 md:items-center">
-            <div className="space-y-4">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
-                GFG Learning Hub
-              </h1>
-              <p className="max-w-[600px] text-gray-500 md:text-lg">
-                Your one-stop resource for computer science learning, practice, and interview preparation.
-              </p>
-            </div>
-            <div className="flex justify-center md:justify-end">
-              <Image
-                src="/GFG LOGO small.png"
-                width={400}
-                height={200}
-                alt="Learning Hub Banner"
-                className="rounded-lg"
-                priority
-              />
-            </div>
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="mb-16 text-center"
+      >
+        <div className="grid gap-8 md:grid-cols-2 md:items-center md:text-left">
+          <div className="space-y-6">
+            <h1 className="text-4xl font-bold tracking-tight dark:text-gray-200 sm:text-5xl md:text-6xl">
+              GFG Learning Hub
+            </h1>
+            <p className="max-w-[600px] text-gray-600 text-lg md:text-xl leading-relaxed mx-auto md:mx-0">
+              Your one-stop resource for computer science learning, practice, and interview preparation.
+            </p>
+          </div>
+          <div className="flex justify-center md:justify-end">
+            <Image
+              src="/GFG LOGO small.png"
+              width={400}
+              height={200}
+              alt="Learning Hub Banner"
+              className="rounded-lg shadow-lg"
+              priority
+            />
           </div>
         </div>
-      </header>
+      </motion.section>
 
-      <main className="container px-4 py-8 mx-auto space-y-12">
-        {/* Core CS Subjects */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-5 h-5 text-green-600" />
-            <h2 className="text-2xl font-bold tracking-tight">Core CS Subjects</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {coreSubjects.map((subject) => (
+      {/* Core CS Subjects */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="mb-16"
+      >
+        <h2 className="mb-8 text-2xl font-bold">Core CS Subjects</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {coreSubjects.map((subject, index) => (
+            <motion.div
+              key={subject.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+            >
               <ResourceCard
-                key={subject.title}
                 title={subject.title}
                 description={subject.description}
                 includes={subject.includes}
                 url={subject.url}
               />
-            ))}
-          </div>
-        </section>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
-        {/* Programming Languages */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Code className="w-5 h-5 text-green-600" />
-            <h2 className="text-2xl font-bold tracking-tight">Programming Languages</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {programmingLanguages.map((language) => (
+      {/* Programming Languages */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className="mb-16"
+      >
+        <h2 className="mb-8 text-2xl font-bold">Programming Languages</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {programmingLanguages.map((language, index) => (
+            <motion.div
+              key={language.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+            >
               <ResourceCard
-                key={language.title}
                 title={language.title}
                 description={language.description}
                 includes={language.includes}
                 url={language.url}
               />
-            ))}
-          </div>
-        </section>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
-        {/* DSA & Competitive Programming */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <FileCode className="w-5 h-5 text-green-600" />
-            <h2 className="text-2xl font-bold tracking-tight">DSA & Competitive Programming</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {dsaTopics.map((topic) => (
+      {/* DSA & Competitive Programming */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="mb-16"
+      >
+        <h2 className="mb-8 text-2xl font-bold">DSA & Competitive Programming</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {dsaTopics.map((topic, index) => (
+            <motion.div
+              key={topic.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+            >
               <ResourceCard
-                key={topic.title}
                 title={topic.title}
                 description={topic.description}
                 includes={topic.includes}
                 url={topic.url}
               />
-            ))}
-          </div>
-        </section>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
-        {/* Web Development */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Laptop className="w-5 h-5 text-green-600" />
-            <h2 className="text-2xl font-bold tracking-tight">Web Development</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {webDevTopics.map((topic) => (
+      {/* Web Development */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="mb-16"
+      >
+        <h2 className="mb-8 text-2xl font-bold">Web Development</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {webDevTopics.map((topic, index) => (
+            <motion.div
+              key={topic.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+            >
               <ResourceCard
-                key={topic.title}
                 title={topic.title}
                 description={topic.description}
                 includes={topic.includes}
                 url={topic.url}
               />
-            ))}
-          </div>
-        </section>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
-        {/* AI & Machine Learning */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Lightbulb className="w-5 h-5 text-green-600" />
-            <h2 className="text-2xl font-bold tracking-tight">AI & Machine Learning</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {aiMlTopics.map((topic) => (
+      {/* AI & Machine Learning */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.0 }}
+        className="mb-16"
+      >
+        <h2 className="mb-8 text-2xl font-bold">AI & Machine Learning</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {aiMlTopics.map((topic, index) => (
+            <motion.div
+              key={topic.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+            >
               <ResourceCard
-                key={topic.title}
                 title={topic.title}
                 description={topic.description}
                 includes={topic.includes}
                 url={topic.url}
               />
-            ))}
-          </div>
-        </section>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
-        {/* Interview Preparation */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-green-600" />
-            <h2 className="text-2xl font-bold tracking-tight">Interview Preparation</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {interviewTopics.map((topic) => (
+      {/* Interview Preparation */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
+        className="mb-16"
+      >
+        <h2 className="mb-8 text-2xl font-bold">Interview Preparation</h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {interviewTopics.map((topic, index) => (
+            <motion.div
+              key={topic.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+            >
               <ResourceCard
-                key={topic.title}
                 title={topic.title}
                 description={topic.description}
                 includes={topic.includes}
                 url={topic.url}
               />
-            ))}
-          </div>
-        </section>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
-        {/* Practice with LeetCode */}
-<section className="space-y-4">
-  <div className="flex items-center gap-2">
-    <Database className="w-5 h-5 text-green-600" />
-    <h2 className="text-2xl font-bold tracking-tight">Practice with LeetCode</h2>
-  </div>
-  <div className="grid gap-4 sm:grid-cols-2">
-    <ResourceCard
-      title="DSA 75"
-      description="Top 75 data structures and algorithms problems to master coding interviews."
-      includes={[
-        "Array and string manipulation problems",
-        "Tree and graph algorithm challenges",
-        "Dynamic programming interview questions",
-        "Sorting and searching algorithm exercises",
-      ]}
-      url="https://leetcode.com/list/xi4ci4ig/" // ✅ LeetCode curated DSA list (or use your custom one)
-    />
-    <ResourceCard
-      title="SQL 50"
-      description="Essential SQL problems to prepare for database-related interview questions."
-      includes={[
-        "Basic SELECT, WHERE, and JOIN queries",
-        "Aggregation functions and GROUP BY",
-        "Window functions and advanced SQL",
-        "Database design and optimization problems",
-      ]}
-      url="https://leetcode.com/problemset/database/" // ✅ LeetCode SQL problems
-    />
-  </div>
-</section>
-
-      </main>
-    </div>
+      {/* Practice with LeetCode */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.4 }}
+        className="mb-16"
+      >
+        <h2 className="mb-8 text-2xl font-bold">Practice with LeetCode</h2>
+        <div className="grid gap-8 sm:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            <ResourceCard
+              title="DSA 75"
+              description="Top 75 data structures and algorithms problems to master coding interviews."
+              includes={[
+                "Array and string manipulation problems",
+                "Tree and graph algorithm challenges",
+                "Dynamic programming interview questions",
+                "Sorting and searching algorithm exercises",
+              ]}
+              url="https://leetcode.com/list/xi4ci4ig/"
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <ResourceCard
+              title="SQL 50"
+              description="Essential SQL problems to prepare for database-related interview questions."
+              includes={[
+                "Basic SELECT, WHERE, and JOIN queries",
+                "Aggregation functions and GROUP BY",
+                "Window functions and advanced SQL",
+                "Database design and optimization problems",
+              ]}
+              url="https://leetcode.com/problemset/database/"
+            />
+          </motion.div>
+        </div>
+      </motion.section>
+    </main>
   )
 }
 
@@ -202,36 +267,32 @@ function ResourceCard({
   url?: string
 }) {
   return (
-    <Card className="overflow-hidden transition-all duration-300 border border-gray-100 shadow-sm hover:shadow-md hover:border-green-100">
-      <div className="w-full h-40 overflow-hidden">
-        <img
-          src={`https://source.unsplash.com/400x200/?${encodeURIComponent(title + ',technology')}`}
-          alt={`${title} illustration`}
-          className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
-        />
-      </div>
-      <CardHeader className="pb-2">
-        <CardTitle className="text-lg">{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <CardDescription>{description}</CardDescription>
-        <div className="space-y-2">
-          <p className="text-sm font-medium text-gray-700">Includes:</p>
-          <ul className="pl-5 space-y-1 text-sm list-disc text-gray-600">
-            {includes.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+    <Card className="h-full">
+      <CardContent className="p-6">
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">{title}</h3>
+          <p className="text-muted-foreground">{description}</p>
+
+          <div className="space-y-2">
+            <p className="text-sm font-medium text-gray-700">Includes:</p>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              {includes.map((item, index) => (
+                <li key={index} className="flex items-start gap-2">
+                  <span className="text-primary">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <a href={url} target="_blank" rel="noopener noreferrer" className="block">
+            <Button className="w-full mt-4">
+              View Resources
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </a>
         </div>
       </CardContent>
-      <CardFooter>
-        <a href={url} target="_blank" rel="noopener noreferrer" className="w-full">
-          <Button className="w-full bg-green-600 hover:bg-green-700">
-            View
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </a>
-      </CardFooter>
     </Card>
   )
 }
@@ -517,69 +578,69 @@ const webDevTopics = [
 
 const aiMlTopics = [
   {
-    "title": "HTML & CSS",
-    "description": "Build the foundation of web development with markup and styling languages.",
-    "url": "https://www.geeksforgeeks.org/html-css/",
+    "title": "Machine Learning Fundamentals",
+    "description": "Learn the core concepts and algorithms that power modern AI systems.",
+    "url": "https://www.geeksforgeeks.org/machine-learning/",
     "includes": [
-        "Semantic HTML5 elements and structure",
-        "CSS layouts (Flexbox, Grid)",
-        "Responsive design principles",
-        "CSS animations and transitions",
+        "Supervised and unsupervised learning",
+        "Linear regression and classification",
+        "Decision trees and ensemble methods",
+        "Model evaluation and validation",
     ],
 },
 {
-    "title": "JavaScript & DOM",
-    "description": "Learn to create dynamic and interactive web applications.",
-    "url": "https://www.geeksforgeeks.org/javascript/",
+    "title": "Deep Learning & Neural Networks",
+    "description": "Explore artificial neural networks and deep learning architectures.",
+    "url": "https://www.geeksforgeeks.org/deep-learning-tutorial/",
     "includes": [
-        "DOM manipulation and events",
-        "Asynchronous JavaScript",
-        "Web APIs and fetch",
-        "Modern ES6+ features",
+        "Feedforward and convolutional neural networks",
+        "Recurrent neural networks (RNNs, LSTMs)",
+        "Backpropagation and optimization",
+        "TensorFlow and PyTorch frameworks",
     ],
 },
 {
-    "title": "React.js",
-    "description": "Master the popular library for building user interfaces and single-page applications.",
-    "url": "https://www.geeksforgeeks.org/reactjs-tutorials/",
+    "title": "Natural Language Processing",
+    "description": "Master techniques for processing and understanding human language.",
+    "url": "https://www.geeksforgeeks.org/natural-language-processing-nlp-tutorial/",
     "includes": [
-        "Component architecture",
-        "State management (Context, Redux)",
-        "Hooks and functional components",
-        "Performance optimization techniques",
+        "Text preprocessing and tokenization",
+        "Sentiment analysis and classification",
+        "Named entity recognition",
+        "Transformer models and BERT",
     ],
 },
 {
-    "title": "Node.js",
-    "description": "Explore server-side JavaScript for building scalable network applications.",
-    "url": "https://www.geeksforgeeks.org/nodejs/",
+    "title": "Computer Vision",
+    "description": "Learn to build systems that can interpret and analyze visual information.",
+    "url": "https://www.geeksforgeeks.org/computer-vision/",
     "includes": [
-        "Express.js framework",
-        "RESTful API design",
-        "Database integration",
-        "Authentication and authorization",
+        "Image processing and feature extraction",
+        "Object detection and recognition",
+        "Convolutional neural networks for vision",
+        "OpenCV and image manipulation",
     ],
 },
 {
-    "title": "Full Stack Development",
-    "description": "Learn to build complete web applications from front-end to back-end.",
-    "url": "https://www.geeksforgeeks.org/full-stack-development/",
+    "title": "Data Science & Analytics",
+    "description": "Extract insights from data using statistical methods and visualization.",
+    "url": "https://www.geeksforgeeks.org/data-science-tutorial/",
     "includes": [
-        "Client-server architecture",
-        "API integration and design",
-        "Database design and ORM",
-        "Deployment and DevOps basics",
+        "Data cleaning and preprocessing",
+        "Statistical analysis and hypothesis testing",
+        "Data visualization with matplotlib/seaborn",
+        "Pandas and NumPy for data manipulation",
     ],
 },
 {
-    "title": "Web Security",
-    "description": "Understand common vulnerabilities and how to secure web applications.",
-    "url": "https://www.geeksforgeeks.org/web-security-basics/",
+    "title": "AI Ethics & Responsible AI",
+    "description": "Understand the ethical implications and responsible development of AI systems.",
+    "url": "https://www.geeksforgeeks.org/artificial-intelligence-ethics/",
     "includes": [
-        "OWASP top 10 vulnerabilities",
-        "Authentication and authorization",
-        "HTTPS and TLS",
-        "Cross-site scripting (XSS) prevention",
+        "Bias detection and mitigation",
+        "Fairness in machine learning",
+        "Privacy-preserving AI techniques",
+        "Explainable AI and interpretability",
     ],
 },
 ]

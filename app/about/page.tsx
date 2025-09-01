@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Code, Users, Trophy, Target } from 'lucide-react'
 import { MemberCard } from "@/components/member-card"
+import { Mission, Statistic, TeamStructure, Member } from "@/types"
 
 export default function AboutPage() {
   return (
@@ -96,7 +97,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.3 }}
                 className="pt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
               >
-                {members.map((member) => (
+                {members.map((member: Member) => (
                   <MemberCard key={member.name} {...member} />
                 ))}
               </motion.div>
@@ -109,7 +110,7 @@ export default function AboutPage() {
 }
 
 
-const missions = [
+const missions: Mission[] = [
   {
     title: "Foster Learning",
     description:
@@ -136,7 +137,7 @@ const missions = [
   },
 ]
 
-const stats = [
+const stats: Statistic[] = [
   {
     value: "50+",
     label: "Active Members",
@@ -155,7 +156,7 @@ const stats = [
   },
 ]
 
-const teams = {
+const teams: TeamStructure = {
   core: [
     {
       name: "Madhur Patil",

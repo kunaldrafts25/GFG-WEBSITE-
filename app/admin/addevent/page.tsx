@@ -7,9 +7,10 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select } from '@/components/ui/select'
 import { toast } from 'sonner'
+import { EventFormData } from '@/types'
 
 export default function AddEventPage() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<EventFormData>({
     title: '',
     description: '',
     category: 'Technical',
@@ -26,16 +27,37 @@ export default function AddEventPage() {
 
   const [submitting, setSubmitting] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const verifyAdminKey = async (key: string): Promise<boolean> => {
+    try {
+      const response = await fetch('/api/admin/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        return data.authenticated === true
+      }
+      return false
+    } catch (error) {
+      console.error('Admin verification failed:', error)
+      return false
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
 
-    if (form.apiKey !== 'Madhur@73') {
-      toast.error('❌ Invalid admin key')
+    // Verify admin key using secure API endpoint
+    const isValidAdmin = await verifyAdminKey(form.apiKey)
+    if (!isValidAdmin) {
+      toast.error('❌ Invalid admin credentials')
       setSubmitting(false)
       return
     }

@@ -5,7 +5,10 @@ import React, { useEffect,useState } from 'react'
 import { motion } from "framer-motion"
 import Image from 'next/image'
 import { FaArrowRight } from 'react-icons/fa'
-import LandingScroll from '../components/landing-scroll'
+import { Event } from '@/types'
+import { ApiErrorBoundary } from '@/components/api-error-boundary'
+import { LazyLandingScroll, LandingScrollSkeleton, LazyComponent } from '@/components/lazy-loading'
+import { usePerformanceMonitoring, useRenderTime } from '@/hooks/use-performance'
 
 
 
@@ -77,7 +80,11 @@ const buttonHover = {
 }
 
 export default function Home() {
-  const [events, setEvents] = useState<any[]>([])
+  const [events, setEvents] = useState<Event[]>([])
+
+  // Performance monitoring
+  usePerformanceMonitoring(true)
+  useRenderTime('HomePage')
 
   useEffect(() => {
     window.onload = () => window.scrollTo(0, 0)
@@ -88,9 +95,10 @@ export default function Home() {
       try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/events`)
         const data = await res.json()
-        setEvents(data)
+        setEvents(Array.isArray(data) ? data : [])
       } catch (err) {
         console.error("Failed to fetch events:", err)
+        setEvents([])
       }
     }
 
@@ -164,19 +172,23 @@ export default function Home() {
             variants={childVariants}
           >
             <motion.a
-              href="https://forms.gle/A9suayWQENsF9QLn9"
+              href="https://forms.gle/fC9j6S43YqGQmBsj8"
               target="_blank"
               className="px-4 sm:px-6 py-2.5 sm:py-3 bg-gfgsc-green text-white rounded-lg font-semibold shadow-lg hover:bg-opacity-95 transform hover:scale-105 transition-all text-sm sm:text-base no-underline"
               whileHover={buttonHover}
             >
               Join Chapter
             </motion.a>
-            <motion.button
+            
+            <motion.a
+              href="/learning"
+              target="_blank"
               className="px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gfgsc-green text-gfgsc-green rounded-lg font-semibold hover:bg-green-50 dark:hover:bg-green-900 transform hover:scale-105 transition-all text-sm sm:text-base"
               whileHover={buttonHover}
             >
               Learn More
-            </motion.button>
+            </motion.a>
+            
           </motion.div>
 
           {/* Info Section */}
@@ -223,7 +235,9 @@ export default function Home() {
       </motion.div>
       
       {/*second Section*/}
-      <LandingScroll/>  
+      <LazyComponent fallback={<LandingScrollSkeleton />}>
+        <LazyLandingScroll />
+      </LazyComponent>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mt-16 mb-16"

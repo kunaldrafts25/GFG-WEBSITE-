@@ -1,15 +1,7 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { FaLinkedin, FaInstagram } from "react-icons/fa"
-
-interface MemberCardProps {
-  name: string
-  role: string
-  photo: string
-  quote: string
-  linkedin: string
-  instagram: string
-}
+import { MemberCardProps } from "@/types"
 
 export function MemberCard({ name, role, photo, quote, linkedin, instagram }: MemberCardProps) {
   return (
@@ -18,8 +10,8 @@ export function MemberCard({ name, role, photo, quote, linkedin, instagram }: Me
         <Image
           src={photo || "/placeholder.svg"}
           alt={name}
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
         />
       </div>
       <CardContent className="mt-4 p-0 w-full">
