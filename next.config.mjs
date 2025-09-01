@@ -1,15 +1,9 @@
 let userConfig = undefined
 try {
-  userConfig = await import('./v0-user-next.config')
+  userConfig = (await import('./v0-user-next.config.mjs')).default
 } catch (e) {
   // ignore error
 }
-
-import bundleAnalyzer from '@next/bundle-analyzer'
-
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
-})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -49,7 +43,8 @@ function mergeConfig(nextConfig, userConfig) {
   for (const key in userConfig) {
     if (
       typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
+      nextConfig[key] !== null &&
+      !Array.isArray(nextConfig[key]) 
     ) {
       nextConfig[key] = {
         ...nextConfig[key],
@@ -61,4 +56,14 @@ function mergeConfig(nextConfig, userConfig) {
   }
 }
 
-export default withBundleAnalyzer(nextConfig)
+let configToExport = nextConfig;
+
+if (process.env.ANALYZE === 'true') {
+  // Dynamically import and apply the bundle analyzer only when needed
+  const withBundleAnalyzer = (await import('@next/bundle-analyzer')).default({
+    enabled: true,
+  });
+  configToExport = withBundleAnalyzer(configToExport);
+}
+
+export default configToExport;
