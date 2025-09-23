@@ -80,29 +80,64 @@ export default function AboutPage() {
 
       <section className="mb-16">
         <h2 className="mb-8 text-2xl font-bold">Our Teams</h2>
-        <Tabs defaultValue="core" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-8">
-
-            {Object.keys(teams).map((team) => (
-              <TabsTrigger key={team} value={team} className="text-sm">
-                {team.charAt(0).toUpperCase() + team.slice(1)}
-              </TabsTrigger>
-            ))}
+        <Tabs defaultValue="2024-25" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 gap-2 mb-8">
+          <TabsTrigger value="2025-26" className="text-sm">
+              2025-26 Team
+            </TabsTrigger>
+            <TabsTrigger value="2024-25" className="text-sm">
+              2024-25 Team
+            </TabsTrigger>
+            
           </TabsList>
-          {Object.entries(teams).map(([teamName, members]) => (
-            <TabsContent key={teamName} value={teamName}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="pt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-              >
-                {members.map((member: Member) => (
-                  <MemberCard key={member.name} {...member} />
+          
+          <TabsContent value="2024-25">
+            <Tabs defaultValue="core" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-8">
+                {Object.keys(teams).map((team) => (
+                  <TabsTrigger key={team} value={team} className="text-sm">
+                    {team.charAt(0).toUpperCase() + team.slice(1)}
+                  </TabsTrigger>
                 ))}
-              </motion.div>
-            </TabsContent>
-          ))}
+              </TabsList>
+              {Object.entries(teams).map(([teamName, members]) => (
+                <TabsContent key={teamName} value={teamName}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="pt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                  >
+                    {members.map((member: Member) => (
+                      <MemberCard key={member.name} {...member} />
+                    ))}
+                  </motion.div>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </TabsContent>
+          
+          <TabsContent value="2025-26">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="pt-5 text-center py-16"
+            >
+              <div className="max-w-md mx-auto">
+                <div className="text-6xl mb-4"></div>
+                <h3 className="text-2xl font-bold mb-4">2025-26 Team</h3>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Our new team for the 2025-26 academic year will be announced soon!
+                </p>
+                <div className="bg-muted/50 rounded-lg p-6">
+                  <p className="text-sm text-muted-foreground">
+                    Stay tuned for exciting updates about our upcoming team members and their roles.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </TabsContent>
         </Tabs>
       </section>
     </main>
