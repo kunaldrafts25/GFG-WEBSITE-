@@ -80,29 +80,68 @@ export default function AboutPage() {
 
       <section className="mb-16">
         <h2 className="mb-8 text-2xl font-bold">Our Teams</h2>
-        <Tabs defaultValue="core" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-8">
-
-            {Object.keys(teams).map((team) => (
-              <TabsTrigger key={team} value={team} className="text-sm">
-                {team.charAt(0).toUpperCase() + team.slice(1)}
-              </TabsTrigger>
-            ))}
+        <Tabs defaultValue="2024-25" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 gap-2 mb-8">
+          <TabsTrigger value="2025-26" className="text-sm">
+              2025-26 Team
+            </TabsTrigger>
+            <TabsTrigger value="2024-25" className="text-sm">
+              2024-25 Team
+            </TabsTrigger>
+            
           </TabsList>
-          {Object.entries(teams).map(([teamName, members]) => (
-            <TabsContent key={teamName} value={teamName}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="pt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-              >
-                {members.map((member: Member) => (
-                  <MemberCard key={member.name} {...member} />
+          
+          <TabsContent value="2024-25">
+            <Tabs defaultValue="core" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-8">
+                {Object.keys(teams).map((team) => (
+                  <TabsTrigger key={team} value={team} className="text-sm">
+                    {team.charAt(0).toUpperCase() + team.slice(1)}
+                  </TabsTrigger>
                 ))}
-              </motion.div>
-            </TabsContent>
-          ))}
+              </TabsList>
+              {Object.entries(teams).map(([teamName, members]) => (
+                <TabsContent key={teamName} value={teamName}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="pt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                  >
+                    {members.map((member: Member) => (
+                      <MemberCard key={member.name} {...member} />
+                    ))}
+                  </motion.div>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </TabsContent>
+          
+          <TabsContent value="2025-26">
+            <Tabs defaultValue="core" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mb-8">
+                {Object.keys(teams2).map((team) => (
+                  <TabsTrigger key={team} value={team} className="text-sm">
+                    {team.charAt(0).toUpperCase() + team.slice(1)}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              {Object.entries(teams2).map(([teamName, members]) => (
+                <TabsContent key={teamName} value={teamName}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="pt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                  >
+                    {members.map((member: Member) => (
+                      <MemberCard key={member.name} {...member} />
+                    ))}
+                  </motion.div>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </TabsContent>
         </Tabs>
       </section>
     </main>
@@ -461,3 +500,303 @@ const teams: TeamStructure = {
     },
   ],
 }
+
+const teams2: TeamStructure = {
+  core: [
+    {
+      name: "Kunal Singh",
+      role: "President",
+      photo: "/Core/Kunal.jpg",
+      quote: "Leading with vision and dedication",
+      linkedin: "",
+      instagram: "",
+    },
+    {
+      name: "Dadasaheb Bhosure",
+      role: "Vice President",
+      photo: "/Core/Dadasaheb.jpg",
+      quote: "Empowering the team to achieve more",
+      linkedin: "",
+      instagram: "",
+    },
+    {
+      name: "Yash Kumar",
+      role: "Secretary",
+      photo: "/Core/Yash.jpg",
+      quote: "Organizing with precision and clarity",
+      linkedin: "",
+      instagram: "",
+    },
+    // Treasurer removed as requested
+  ],
+  technical: [
+    {
+      name: "Dheerendra Solanki",
+      role: "Technical Team Lead",
+      photo: "/Technical Team/Dheerendra.jpg",
+      quote: "Leading the technical team to new heights",
+      linkedin: "",
+      instagram: "",
+    },
+    {
+      name: "Snigdha Singh",
+      role: "Technical Team Member",
+      photo: "/Technical Team/Snigdha.jpg",
+      quote: "Innovating with every line of code",
+      linkedin: "",
+      instagram: "",
+    },
+    {
+      name: "Ashutosh Srivastava",
+      role: "Technical Team Member",
+      photo: "/Technical Team/Ashutosh.jpg",
+      quote: "Solving problems with technology",
+      linkedin: "",
+      instagram: "",
+    },
+    {
+      name: "Krish Agrawal",
+      role: "Technical Team Member",
+      photo: "/Technical Team/Krish.jpg",
+      quote: "Building the future, one code at a time",
+      linkedin: "",
+      instagram: "",
+    },
+    {
+      name: "Shloka Pai",
+      role: "Technical Team Member",
+      photo: "/Technical Team/Shloka.jpg",
+      quote: "Bringing creativity to technology",
+      linkedin: "",
+      instagram: "",
+    },
+    {
+      name: "Ansh Rohilla",
+      role: "Technical Team Member",
+      photo: "/Technical Team/Ansh.jpg",
+      quote: "Transforming ideas into solutions",
+      linkedin: "",
+      instagram: "",
+    },
+    {
+      name: "Kapil Mohite",
+      role: "Technical Team Member",
+      photo: "/Technical Team/Kapil.jpg",
+      quote: "Passionate about technology and teamwork",
+      linkedin: "",
+      instagram: "",
+    },
+  ],
+  design: [
+    {
+      name: "Sanjog Bora",
+      role: "Design Lead",
+      photo: "/Design Team/sanjog.png",
+      quote: "Creating designs that speak volumes",
+      linkedin: "https://linkedin.com/in/sanjogbora",
+      instagram: "https://instagram.com/sanjogbora",
+    },
+    {
+      name: "Divya Kanojiya",
+      role: "Design Team Member",
+      photo: "/Design Team/Divya kanojiya.jpg",
+      quote: "Bringing creativity to life through design",
+      linkedin: "https://linkedin.com/in/divyakanojiya",
+      instagram: "https://instagram.com/divyakanojiya",
+    },
+    {
+      name: "Krishna Kumar Jha",
+      role: "Design Team Member",
+      photo: "/Design Team/Krishna Kumar Jha.jpg",
+      quote: "Designing with purpose and passion",
+      linkedin: "https://linkedin.com/in/krishnakumarjha",
+      instagram: "https://instagram.com/krishnakumarjha",
+    },
+    {
+      name: "Tejas Naukudkar",
+      role: "Design Team Member",
+      photo: "/Design Team/Tejas.jpg",
+      quote: "Creating visual experiences that captivate",
+      linkedin: "https://linkedin.com/in/tejasnaukudkar",
+      instagram: "https://instagram.com/tejasnaukudkar",
+    },
+    {
+      name: "Purva Mulay",
+      role: "Design Team Member",
+      photo: "/Design Team/Purva Mulay_.jpg",
+      quote: "Transforming ideas into beautiful designs",
+      linkedin: "https://linkedin.com/in/purvamulay",
+      instagram: "https://instagram.com/purvamulay",
+    },
+    {
+      name: "Krish Agrawal",
+      role: "Design Team Member",
+      photo: "/Design Team/Krish.jpg",
+      quote: "Designing with a focus on simplicity and elegance",
+      linkedin: "https://linkedin.com/in/krishagrawal",
+      instagram: "https://instagram.com/krishagrawal",
+    },
+  ],
+  events: [
+    {
+      name: "Uttam Gupta",
+      role: "Events Team Lead",
+      photo: "/placeholder.svg?height=400&width=400",
+      quote: "Making events unforgettable",
+      linkedin: "https://linkedin.com/in/uttamgupta",
+      instagram: "https://instagram.com/uttamgupta",
+    },
+    {
+      name: "Shloka Pai",
+      role: "Events Management Team",
+      photo: "/Event Management Team/Shloka.png",
+      quote: "Organizing with attention to detail",
+      linkedin: "https://linkedin.com/in/shlokapai",
+      instagram: "https://instagram.com/shlokapai",
+    },
+    {
+      name: "Kanak Lingwat",
+      role: "Events Management Team",
+      photo: "/Event Management Team/Kanak Lingwat_.jpg",
+      quote: "Creating seamless event experiences",
+      linkedin: "https://linkedin.com/in/kanaklingwat",
+      instagram: "https://instagram.com/kanaklingwat",
+    },
+    {
+      name: "Shivam Sharma",
+      role: "Events Management Team",
+      photo: "/Event Management Team/Shivam Sharma_.jpg",
+      quote: "Bringing creativity and structure to events",
+      linkedin: "https://linkedin.com/in/shivamsharma",
+      instagram: "https://instagram.com/shivamsharma",
+    },
+    {
+      name: "Raghavendra Dwivedi",
+      role: "Events Management Team",
+      photo: "/Event Management Team/Raghavendra Dwivedi_.jpg",
+      quote: "Mastering the art of event coordination",
+      linkedin: "https://linkedin.com/in/raghavendradowivedi",
+      instagram: "https://instagram.com/raghavendradowivedi",
+    },
+    {
+      name: "Taresh Chabukswar",
+      role: "Events Management Team",
+      photo: "/Event Management Team/Taresh Chabukswar.jpg",
+      quote: "Delivering exceptional event experiences",
+      linkedin: "https://linkedin.com/in/tareshchabukswar",
+      instagram: "https://instagram.com/tareshchabukswar",
+    },
+    {
+      name: "Suvesha Khan",
+      role: "Events Management Team",
+      photo: "/Event Management Team/Suvesha K.jpg",
+      quote: "Making every event memorable",
+      linkedin: "https://linkedin.com/in/suveshakhan",
+      instagram: "https://instagram.com/suveshakhan",
+    },
+  ],
+  marketing: [
+    {
+      name: "Rutuja Makode",
+      role: "Marketing Team Lead",
+      photo: "/placeholder.svg?height=400&width=400",
+      quote: "Building impactful marketing strategies",
+      linkedin: "https://linkedin.com/in/rutujamakode",
+      instagram: "https://instagram.com/rutujamakode",
+    },
+    
+    {
+      name: "Varun",
+      role: "Marketing Team Member",
+      photo: "/Marketing Team/Varun.jpg",
+      quote: "Strategizing for maximum outreach",
+      linkedin: "https://linkedin.com/in/varun",
+      instagram: "https://instagram.com/varun",
+    },
+    {
+      name: "Shivam",
+      role: "Marketing Team Member",
+      photo: "/Marketing Team/SHIVam.jpg",
+      quote: "Pushing the boundaries of creativity",
+      linkedin: "https://linkedin.com/in/shivam",
+      instagram: "https://instagram.com/shivam",
+    },
+    {
+      name: "Amish",
+      role: "Marketing Team Member",
+      photo: "/Marketing Team/Amish Gupta_.webp",
+      quote: "Innovative marketing ideas that engage",
+      linkedin: "https://linkedin.com/in/amish",
+      instagram: "https://instagram.com/amish",
+    },
+    {
+      name: "Vaibhavi",
+      role: "Marketing Team Member",
+      photo: "/Marketing Team/Vaibhavi.jpg",
+      quote: "Delivering brand excellence",
+      linkedin: "https://linkedin.com/in/vaibhavi",
+      instagram: "https://instagram.com/vaibhavi",
+    },
+    {
+      name: "Arnav",
+      role: "Marketing Team Member",
+      photo: "/Marketing Team/Arnav Pattnaik_.jpg",
+      quote: "Amplifying brand presence with creativity",
+      linkedin: "https://linkedin.com/in/arnav",
+      instagram: "https://instagram.com/arnav",
+    },
+  ],
+  social: [
+    {
+      name: "Kartik Sharma",
+      role: "Social Media Team Member",
+      photo: "/placeholder.svg?height=400&width=400",
+      quote: "Engaging the audience with creative content",
+      linkedin: "https://linkedin.com/in/kartiksharma",
+      instagram: "https://instagram.com/kartiksharma",
+    },
+    {
+      name: "Tejas Itkar",
+      role: "Social Media Team Member",
+      photo: "/placeholder.svg?height=400&width=400",
+      quote: "Creating impact through social media",
+      linkedin: "https://linkedin.com/in/tejasitkar",
+      instagram: "https://instagram.com/tejasitkar",
+    },
+    {
+      name: "Saksham",
+      role: "Social Media Team Member",
+      photo: "/placeholder.svg?height=400&width=400",
+      quote: "Building community engagement",
+      linkedin: "https://linkedin.com/in/saksham",
+      instagram: "https://instagram.com/saksham",
+    },
+  ],
+  website: [
+    {
+      name: "Prathm Shah",
+      role: "Website Team Member",
+      photo: "/Website Team/Pratham Shah_.webp",
+      quote: "Engaging the audience with creative content",
+      linkedin: "https://linkedin.com/in/kartiksharma",
+      instagram: "https://instagram.com/kartiksharma",
+    },
+    {
+      name: "Meghraj Nair",
+      role: "Website Team Member",
+      photo: "/Website Team/Meghraj Nair.jpeg",
+      quote: "Creating impact through social media",
+      linkedin: "https://linkedin.com/in/tejasitkar",
+      instagram: "https://instagram.com/tejasitkar",
+    },
+    {
+      name: "Shaaz Jiwani",
+      role: "Website Team Member",
+      photo: "/Website Team/Shaaz Jiwani.PNG",
+      quote: "Building community engagement",
+      linkedin: "https://linkedin.com/in/saksham",
+      instagram: "https://instagram.com/saksham",
+    },
+  ],
+}
+
