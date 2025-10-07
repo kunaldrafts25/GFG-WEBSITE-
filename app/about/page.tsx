@@ -80,7 +80,7 @@ export default function AboutPage() {
 
       <section className="mb-16">
         <h2 className="mb-8 text-2xl font-bold">Our Teams</h2>
-        <Tabs defaultValue="2024-25" className="w-full">
+        <Tabs defaultValue="2025-26" className="w-full">
           <TabsList className="grid w-full grid-cols-2 gap-2 mb-8">
           <TabsTrigger value="2025-26" className="text-sm">
               2025-26 Team
@@ -533,7 +533,7 @@ const teams2: TeamStructure = {
     {
       name: "Dheerendra Solanki",
       role: "Technical Team Lead",
-      photo: "/Technical Team/Dheerendra.jpg",
+      photo: "/Technical Team/Dheerendra.jpeg",
       quote: "Leading the technical team to new heights",
       linkedin: "",
       instagram: "",
@@ -591,7 +591,7 @@ const teams2: TeamStructure = {
     {
       name: "Shrawni Avhad",
       role: "Design Lead",
-      photo: "/Design Team/sanjo.png",
+      photo: "/Design Team/Shrawni.jpeg",
       quote: "Creating designs that speak volumes",
       linkedin: "https://linkedin.com/in/sanjogbora",
       instagram: "https://www.instagram.com/_.shrawniii/",
