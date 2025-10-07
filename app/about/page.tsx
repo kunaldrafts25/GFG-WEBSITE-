@@ -551,8 +551,8 @@ const teams2: TeamStructure = {
       role: "Technical Team Member",
       photo: "/Technical Team/krish Agrawal.jpg",
       quote: "Building the future, one code at a time",
-      linkedin: "",
-      instagram: "",
+      linkedin: "rtweyjuykiloikuytre",
+      instagram: "retyuioiuytrew",
     },
     {
       name: "Kapil Mohite",
@@ -567,8 +567,8 @@ const teams2: TeamStructure = {
       role: "Technical Team Member",
       photo: "/Technical Team/Snigdha.jpg",
       quote: "Transforming ideas into solutions",
-      linkedin: "",
-      instagram: "",
+      linkedin: "asdfghjkl",
+      instagram: "asdfghjk",
     },
     {
       name: "Ashutosh Srivastava",
