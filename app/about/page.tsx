@@ -589,7 +589,7 @@ const teams2: TeamStructure = {
   ],
   design: [
     {
-      name: "Shravani Avad",
+      name: "Shrawni Avhad",
       role: "Design Lead",
       photo: "/Design Team/sanjo.png",
       quote: "Creating designs that speak volumes",
@@ -834,8 +834,8 @@ const teams2: TeamStructure = {
       role: "Website Team Member",
       photo: "/Website Team/Aditya_Nikam.jpg",
       quote: "Engaging the audience with creative content",
-      linkedin: "https://linkedin.com/in/kartiksharma",
-      instagram: "https://instagram.com/kartiksharma",
+      linkedin: "https://www.linkedin.com/in/aditya-nikam-341737322/",
+      instagram: "https://www.instagram.com/aditya_nikam_10/",
     },
     {
       name: "Aryan Gulhane",
