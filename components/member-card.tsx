@@ -1,9 +1,9 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
-import { FaLinkedin, FaInstagram } from "react-icons/fa"
+import { FaLinkedin, FaInstagram, FaGithub, FaBehance } from "react-icons/fa"
 import { MemberCardProps } from "@/types"
 
-export function MemberCard({ name, role, photo, quote, linkedin, instagram }: MemberCardProps) {
+export function MemberCard({ name, role, photo, quote, linkedin, instagram, github, behance }: MemberCardProps) {
   return (
     <Card className="flex flex-col items-center text-center p-4">
       <div className="w-48 h-48 relative rounded-full overflow-hidden">
@@ -25,6 +25,16 @@ export function MemberCard({ name, role, photo, quote, linkedin, instagram }: Me
           <a href={instagram} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800">
             <FaInstagram size={20} />
           </a>
+          {github && (
+            <a href={github} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-800">
+              <FaGithub size={20} />
+            </a>
+          )}
+          {behance && (
+            <a href={behance} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600">
+              <FaBehance size={20} />
+            </a>
+          )}
         </div>
       </CardContent>
     </Card>

@@ -23,6 +23,8 @@ export interface Member {
   quote: string;
   linkedin: string;
   instagram: string;
+  github: string;
+  behance: string;
 }
 
 export interface TeamStructure {
