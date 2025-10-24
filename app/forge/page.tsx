@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { FaWhatsapp } from "react-icons/fa"
 import { 
   Github, 
   ExternalLink, 
@@ -54,7 +55,7 @@ export default function ForgePage() {
               </p>
             </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col-3 tracking-tight gap-4 justify-center items-center">
             <Button asChild>
               <a
                 href="https://forms.gle/YBfjQisxVro1v7pm9"
@@ -73,6 +74,15 @@ export default function ForgePage() {
               >
                 <Github className="mr-2 h-4 w-4" />
                 View Active Projects
+              </a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a
+                href="https://chat.whatsapp.com/J4kDAEsUQ08B9uWJ7RMoiO"
+                target="_blank"
+                rel="noopener noreferrer"
+              > <FaWhatsapp className="ml-2 h-4 w-4" />
+                Join our Whatsapp Community 
               </a>
             </Button>
           </div>

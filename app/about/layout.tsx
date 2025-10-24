@@ -1,3 +1,4 @@
+
 import { generatePageMetadata } from "@/lib/metadata"
 
 export const metadata = generatePageMetadata(
