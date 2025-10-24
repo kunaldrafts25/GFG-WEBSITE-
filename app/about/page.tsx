@@ -197,10 +197,10 @@ const stats: Statistic[] = [
 
 const teams: TeamStructure = {
   core: [
-    { name: "Madhur Patil", role: "President", photo: "/Core/Madhur.jpg", quote: "Leading with passion and innovation", linkedin: "https://linkedin.com/in/madhurpatil", instagram: "https://instagram.com/simply.madhur", github: "", behance: "" },
-    { name: "Dev Hinduja", role: "Vice President", photo: "/Core/Dev.jpg", quote: "Empowering others to achieve greatness", linkedin: "https://linkedin.com/in/janesmith", instagram: "https://instagram.com/janesmith", github: "", behance: "" },
-    { name: "Dadasaheb Bhosure", role: "Secretary", photo: "/placeholder.svg?height=400&width=400", quote: "Bringing clarity and focus to the team", linkedin: "https://linkedin.com/in/nidhiphophaliya", instagram: "https://instagram.com/nidhiphophaliya", github: "", behance: "" },
-    { name: "Mizan Lakhani", role: "Treasurer", photo: "/Core/Mizan.jpg", quote: "Managing resources with precision and accountability", linkedin: "https://linkedin.com/in/piyushchavan", instagram: "https://instagram.com/piyushchavan", github: "", behance: "" },
+    { name: "Madhur Patil", role: "President", photo: "/Core/madhur.jpg", quote: "Leading with passion and innovation", linkedin: "https://linkedin.com/in/madhurpatil", instagram: "https://instagram.com/simply.madhur", github: "", behance: "" },
+    { name: "Dev Hinduja", role: "Vice President", photo: "/Core/dev.jpg", quote: "Empowering others to achieve greatness", linkedin: "https://linkedin.com/in/janesmith", instagram: "https://instagram.com/janesmith", github: "", behance: "" },
+    { name: "Dadasaheb Bhosure", role: "Secretary", photo: "/Core/Dadasaheb Bhosure .png", quote: "Bringing clarity and focus to the team", linkedin: "https://linkedin.com/in/nidhiphophaliya", instagram: "https://instagram.com/nidhiphophaliya", github: "", behance: "" },
+    { name: "Mizan Lakhani", role: "Treasurer", photo: "/Core/mizan.jpg", quote: "Managing resources with precision and accountability", linkedin: "https://linkedin.com/in/piyushchavan", instagram: "https://instagram.com/piyushchavan", github: "", behance: "" },
   ],
   technical: [
     { name: "Preksha Garg", role: "Technical Team Lead", photo: "/Technical Team/Preksha.jpg", quote: "Leading the technical team to excellence", linkedin: "https://linkedin.com/in/prekshagarg", instagram: "https://instagram.com/prekshagarg", github: "", behance: "" },
@@ -252,12 +252,12 @@ const teams: TeamStructure = {
 const teams2: TeamStructure = {
   core: [
     { name: "Kunal Singh", role: "President", photo: "/Core/Kunal.png", quote: "Leading with vision and dedication", linkedin: "https://www.linkedin.com/in/kunalsinghh25/", instagram: "https://www.instagram.com/__kunalsinghh/", github: "https://github.com/kunaldrafts25", behance: "" },
-    { name: "Dadasaheb Bhosure", role: "Vice President", photo: "/Core/Dadasaheb Bhosure .png", quote: "Empowering the team to achieve more", linkedin: "no entry", instagram: "no entry", github: "no entry", behance: "" },
+    { name: "Dadasaheb Bhosure", role: "Vice President", photo: "/Core/Dadasaheb Bhosure .png", quote: "Empowering the team to achieve more", linkedin: "https://www.linkedin.com/in/dadasaheb-bhosure", instagram: "https://www.instagram.com/parpardadaji", github: "https://share.google/F8rmiWmfUYPOPADTE", behance: "" },
     { name: "Yash Kumar", role: "Secretary", photo: "/Core/Yash.png", quote: "Organizing with precision and clarity", linkedin: "no entry", instagram: "https://www.instagram.com/yashkr29/", github: "https://github.com/Yashkr29", behance: "" },
     // Treasurer removed based on 2025 data structure in the file
   ],
   technical: [
-    { name: "Dheerendra Solanki", role: "Technical Team Lead", photo: "/Technical Team/Dheerendra.jpg", quote: "Leading the technical team to new heights", linkedin: "no entry", instagram: "no entry", github: "no entry", behance: "" },
+    { name: "Dheerendra Solanki", role: "Technical Team Lead", photo: "/Technical Team/Dheerendra.jpg", quote: "Leading the technical team to new heights", linkedin: "https://www.linkedin.com/in/dheerendra-pratap-singh-solanki-2362652ab/", instagram: "https://www.instagram.com/the_dheeru_solanki/", github: "https://github.com/dheerendrasolanki03", behance: "" },
     { name: "Shloka Pai", role: "Technical Team Member", photo: "/Technical Team/Shloka Pai.png", quote: "Innovating with every line of code", linkedin: "https://www.linkedin.com/in/shloka-pai-48a548208/", instagram: "https://www.instagram.com/shlokapai?igsh=d2dqOGI4YmRtdjNo&utm_source=qr", github: "https://github.com/Shloka-Pai", behance: "" },
     { name: "Krish Agrawal", role: "Technical Team Member", photo: "/Technical Team/krish Agrawal.jpg", quote: "Building the future, one code at a time", linkedin: "https://www.linkedin.com/in/krishagrawal75", instagram: "https://www.instagram.com/Krishagrawal.23/", github: "https://github.com/krishagrawal623", behance: "" },
     { name: "Kapil Mohite", role: "Technical Team Member", photo: "/Technical Team/kapil_mohite.jpeg", quote: "Passionate about technology and teamwork", linkedin: "no entry", instagram: "no entry", github: "no entry", behance: "" },
