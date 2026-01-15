@@ -4,6 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Shared component classes to reduce repetition */
+@layer components {
+  .nav-link {
+    @apply hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none;
+  }
+  
+  .section-heading {
+    @apply text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+  
+  .btn-primary {
+    @apply bg-gfgsc-green text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-800 transition;
+  }
+  
+  .btn-outline-primary {
+    @apply border-2 border-gfgsc-green text-gfgsc-green rounded-lg font-semibold hover:bg-green-50 dark:hover:bg-green-900 transition-all;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

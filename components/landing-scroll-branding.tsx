@@ -45,7 +45,7 @@ const LandingScrollBranding: React.FC = () => {
   }, [])
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 overflow-hidden">
+    <div className="bg-white overflow-hidden">
       <section className="landing-scroll-branding">
         <div className="scroll Developers alt" ref={marqueeRef}>
           <div ref={marqueeItemsRef}>

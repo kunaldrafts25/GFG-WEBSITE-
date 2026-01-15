@@ -1,19 +1,28 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Calendar, Clock, User, ChevronDown, ChevronUp, Trophy, Target, Users, Code, AlertCircle, RefreshCw } from 'lucide-react'
+import { Calendar, Clock, User, ChevronDown, ChevronUp, Trophy, Target, Users, Code, AlertCircle, RefreshCw, CheckCircle, Loader2 } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Event, EventCardProps } from "@/types"
+import { getToken, getCurrentUser, User as AuthUser } from "@/lib/auth"
+import { toast } from "sonner"
+import Confetti, { SuccessAnimation } from '@/components/confetti'
 
 export default function EventsPage() {
+  const router = useRouter()
   const [events, setEvents] = useState<Event[]>([])
   const [expandedEvent, setExpandedEvent] = useState<string | null>(null)
-
   const [fetchError, setFetchError] = useState<Error | null>(null)
+  const [currentUser, setCurrentUser] = useState<AuthUser | null>(null)
+  const [registeredEvents, setRegisteredEvents] = useState<Set<string>>(new Set())
+  const [registering, setRegistering] = useState<string | null>(null)
+  const [showConfetti, setShowConfetti] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
 
   const fetchEvents = async () => {
     try {
@@ -32,9 +41,85 @@ export default function EventsPage() {
     }
   }
 
+  // Check auth and registration status
   useEffect(() => {
+    const checkAuth = async () => {
+      const user = await getCurrentUser()
+      setCurrentUser(user)
+    }
+    checkAuth()
     fetchEvents()
   }, [])
+
+  const handleRegister = async (eventId: string) => {
+    if (!currentUser) {
+      toast.info('Please sign in to register for events')
+      router.push('/login')
+      return
+    }
+
+    setRegistering(eventId)
+    const token = getToken()
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/events/${eventId}/register`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        setRegisteredEvents(prev => new Set([...prev, eventId]))
+        // Trigger celebration
+        setShowConfetti(true)
+        setShowSuccess(true)
+        setTimeout(() => setShowSuccess(false), 1500)
+        setTimeout(() => setShowConfetti(false), 3000)
+        toast.success('🎉 ' + (data.message || 'Successfully registered!'))
+      } else {
+        toast.error(data.message || 'Registration failed')
+      }
+    } catch (error) {
+      toast.error('Failed to register for event')
+    } finally {
+      setRegistering(null)
+    }
+  }
+
+  const handleUnregister = async (eventId: string) => {
+    setRegistering(eventId)
+    const token = getToken()
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/events/${eventId}/register`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+
+      if (res.ok) {
+        setRegisteredEvents(prev => {
+          const newSet = new Set(prev)
+          newSet.delete(eventId)
+          return newSet
+        })
+        toast.success('Unregistered from event')
+      } else {
+        const data = await res.json()
+        toast.error(data.message || 'Failed to unregister')
+      }
+    } catch (error) {
+      toast.error('Failed to unregister from event')
+    } finally {
+      setRegistering(null)
+    }
+  }
 
   const toggleEvent = (eventId: string) => {
     setExpandedEvent(expandedEvent === eventId ? null : eventId)
@@ -47,7 +132,7 @@ export default function EventsPage() {
       endDate: new Date((end || start).trim())
     }
   }
-  
+
   const upcomingEvents = events
     .filter(event => parseDate(event.date).endDate >= new Date())
     .sort((a, b) => parseDate(a.date).startDate.getTime() - parseDate(b.date).startDate.getTime());
@@ -55,8 +140,6 @@ export default function EventsPage() {
   const pastEvents = events
     .filter(event => parseDate(event.date).endDate < new Date())
     .sort((a, b) => parseDate(b.date).endDate.getTime() - parseDate(a.date).endDate.getTime());
-  
-
 
 
   const EventCard = ({ event, isPast = false }: EventCardProps) => (
@@ -89,9 +172,9 @@ export default function EventsPage() {
         <div className="relative">
           <div className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground p-4 relative overflow-hidden">
             <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
-            <h3 className="relative text-xl font-bold text-card-foreground">
+            <a href={`/events/${event.id}`} className="relative text-xl font-bold text-card-foreground hover:underline cursor-pointer block">
               {event.title}
-            </h3>
+            </a>
           </div>
 
           <CardContent className="p-6 space-y-4 bg-card/95 text-card-foreground">
@@ -166,25 +249,38 @@ export default function EventsPage() {
                     </ul>
                   </div>
 
-                  {!isPast && event.registrationLink ? (
-                    <motion.a
-                      href={event.registrationLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Button className="w-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:from-primary/90 hover:to-primary/70 font-semibold py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
-                        Register Now
+                  {!isPast ? (
+                    registeredEvents.has(event.id) ? (
+                      <Button
+                        onClick={() => handleUnregister(event.id)}
+                        disabled={registering === event.id}
+                        className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg shadow-md transition-all duration-300"
+                      >
+                        {registering === event.id ? (
+                          <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Processing...</>
+                        ) : (
+                          <><CheckCircle className="mr-2 h-4 w-4" /> Registered ✓ (Click to Cancel)</>
+                        )}
                       </Button>
-                    </motion.a>
+                    ) : (
+                      <Button
+                        onClick={() => handleRegister(event.id)}
+                        disabled={registering === event.id}
+                        className="w-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:from-primary/90 hover:to-primary/70 font-semibold py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                      >
+                        {registering === event.id ? (
+                          <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Registering...</>
+                        ) : (
+                          'Register Now'
+                        )}
+                      </Button>
+                    )
                   ) : (
                     <Button
                       disabled
                       className="w-full bg-muted/50 text-muted-foreground cursor-not-allowed font-semibold py-2 rounded-lg backdrop-blur-sm"
                     >
-                      {isPast ? 'Event Completed' : 'Registrations Closed'}
+                      Event Completed
                     </Button>
                   )}
                 </motion.div>
@@ -223,6 +319,10 @@ export default function EventsPage() {
 
   return (
     <main className="container py-12 mt-20 px-6 mx-auto">
+      {/* Celebration Animations */}
+      <Confetti trigger={showConfetti} />
+      <SuccessAnimation show={showSuccess} />
+
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

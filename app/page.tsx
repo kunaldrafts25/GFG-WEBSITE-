@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion"
 import Image from 'next/image'
 import { FaArrowRight } from 'react-icons/fa'
@@ -9,6 +9,7 @@ import { Event } from '@/types'
 import { ApiErrorBoundary } from '@/components/api-error-boundary'
 import { LazyLandingScroll, LandingScrollSkeleton, LazyComponent } from '@/components/lazy-loading'
 import { usePerformanceMonitoring, useRenderTime } from '@/hooks/use-performance'
+import { TestimonialsCarousel } from '@/components/testimonials-carousel'
 
 
 
@@ -50,18 +51,18 @@ const ConnectIcon = () => (
 
 const Icon = () => (
   <svg
-          stroke="currentColor"
-          fill="currentColor"
-          strokeWidth="0"
-          role="img"
-          viewBox="0 0 24 24"
-          className="text-gfgsc-green w-8 h-8 sm:w-10 sm:h-10"
-          height="1em"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M21.45 14.315c-.143.28-.334.532-.565.745a3.691 3.691 0 0 1-1.104.695 4.51 4.51 0 0 1-3.116-.016 3.79 3.79 0 0 1-2.135-2.078 3.571 3.571 0 0 1-.13-.353h7.418a4.26 4.26 0 0 1-.368 1.008zm-11.99-.654a3.793 3.793 0 0 1-2.134 2.078 4.51 4.51 0 0 1-3.117.016 3.7 3.7 0 0 1-1.104-.695 2.652 2.652 0 0 1-.564-.745 4.221 4.221 0 0 1-.368-1.006H9.59c-.038.12-.08.238-.13.352zm14.501-1.758a3.849 3.849 0 0 0-.082-.475l-9.634-.008a3.932 3.932 0 0 1 1.143-2.348c.363-.35.79-.625 1.26-.809a3.97 3.97 0 0 1 4.484.957l1.521-1.49a5.7 5.7 0 0 0-1.922-1.357 6.283 6.283 0 0 0-2.544-.49 6.35 6.35 0 0 0-2.405.457 6.007 6.007 0 0 0-1.963 1.276 6.142 6.142 0 0 0-1.325 1.94 5.862 5.862 0 0 0-.466 1.864h-.063a5.857 5.857 0 0 0-.467-1.865 6.13 6.13 0 0 0-1.325-1.939A6 6 0 0 0 8.21 6.34a6.698 6.698 0 0 0-4.949.031A5.708 5.708 0 0 0 1.34 7.73l1.52 1.49a4.166 4.166 0 0 1 4.484-.958c.47.184.898.46 1.26.81.368.36.66.792.859 1.268.146.344.242.708.285 1.08l-9.635.008A4.714 4.714 0 0 0 0 12.457a6.493 6.493 0 0 0 .345 2.127 4.927 4.927 0 0 0 1.08 1.783c.528.56 1.17 1 1.88 1.293a6.454 6.454 0 0 0 2.504.457c.824.005 1.64-.15 2.404-.457a5.986 5.986 0 0 0 1.964-1.277 6.116 6.116 0 0 0 1.686-3.076h.273a6.13 6.13 0 0 0 1.686 3.077 5.99 5.99 0 0 0 1.964 1.276 6.345 6.345 0 0 0 2.405.457 6.45 6.45 0 0 0 2.502-.457 5.42 5.42 0 0 0 1.882-1.293 4.928 4.928 0 0 0 1.08-1.783A6.52 6.52 0 0 0 24 12.457a4.757 4.757 0 0 0-.039-.554z"></path>
-        </svg>
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    role="img"
+    viewBox="0 0 24 24"
+    className="text-gfgsc-green w-8 h-8 sm:w-10 sm:h-10"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M21.45 14.315c-.143.28-.334.532-.565.745a3.691 3.691 0 0 1-1.104.695 4.51 4.51 0 0 1-3.116-.016 3.79 3.79 0 0 1-2.135-2.078 3.571 3.571 0 0 1-.13-.353h7.418a4.26 4.26 0 0 1-.368 1.008zm-11.99-.654a3.793 3.793 0 0 1-2.134 2.078 4.51 4.51 0 0 1-3.117.016 3.7 3.7 0 0 1-1.104-.695 2.652 2.652 0 0 1-.564-.745 4.221 4.221 0 0 1-.368-1.006H9.59c-.038.12-.08.238-.13.352zm14.501-1.758a3.849 3.849 0 0 0-.082-.475l-9.634-.008a3.932 3.932 0 0 1 1.143-2.348c.363-.35.79-.625 1.26-.809a3.97 3.97 0 0 1 4.484.957l1.521-1.49a5.7 5.7 0 0 0-1.922-1.357 6.283 6.283 0 0 0-2.544-.49 6.35 6.35 0 0 0-2.405.457 6.007 6.007 0 0 0-1.963 1.276 6.142 6.142 0 0 0-1.325 1.94 5.862 5.862 0 0 0-.466 1.864h-.063a5.857 5.857 0 0 0-.467-1.865 6.13 6.13 0 0 0-1.325-1.939A6 6 0 0 0 8.21 6.34a6.698 6.698 0 0 0-4.949.031A5.708 5.708 0 0 0 1.34 7.73l1.52 1.49a4.166 4.166 0 0 1 4.484-.958c.47.184.898.46 1.26.81.368.36.66.792.859 1.268.146.344.242.708.285 1.08l-9.635.008A4.714 4.714 0 0 0 0 12.457a6.493 6.493 0 0 0 .345 2.127 4.927 4.927 0 0 0 1.08 1.783c.528.56 1.17 1 1.88 1.293a6.454 6.454 0 0 0 2.504.457c.824.005 1.64-.15 2.404-.457a5.986 5.986 0 0 0 1.964-1.277 6.116 6.116 0 0 0 1.686-3.076h.273a6.13 6.13 0 0 0 1.686 3.077 5.99 5.99 0 0 0 1.964 1.276 6.345 6.345 0 0 0 2.405.457 6.45 6.45 0 0 0 2.502-.457 5.42 5.42 0 0 0 1.882-1.293 4.928 4.928 0 0 0 1.08-1.783A6.52 6.52 0 0 0 24 12.457a4.757 4.757 0 0 0-.039-.554z"></path>
+  </svg>
 )
 
 const containerVariants = {
@@ -81,6 +82,7 @@ const buttonHover = {
 
 export default function Home() {
   const [events, setEvents] = useState<Event[]>([])
+  const [currentUser, setCurrentUser] = useState<{ displayName?: string; username: string } | null>(null)
 
   // Performance monitoring
   usePerformanceMonitoring(true)
@@ -88,6 +90,25 @@ export default function Home() {
 
   useEffect(() => {
     window.onload = () => window.scrollTo(0, 0)
+
+    // Check if user is logged in
+    const checkUser = async () => {
+      try {
+        const token = localStorage.getItem('gfg_auth_token')
+        if (token) {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/me`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+          })
+          if (res.ok) {
+            const data = await res.json()
+            setCurrentUser(data.user)
+          }
+        }
+      } catch (err) {
+        console.error('Auth check failed:', err)
+      }
+    }
+    checkUser()
   }, [])
 
   useEffect(() => {
@@ -126,8 +147,8 @@ export default function Home() {
         >
           {/* Icon and Subtitle */}
           <motion.div className="flex items-center space-x-2" variants={childVariants}>
-            
-          
+
+
             {[
               {
                 icon: <Icon />,
@@ -147,7 +168,7 @@ export default function Home() {
                 </span>
               </motion.div>
             ))}
-            </motion.div>
+          </motion.div>
 
           {/* New Heading */}
           <motion.h1
@@ -171,24 +192,32 @@ export default function Home() {
             className="hero-text flex flex-wrap gap-2 sm:gap-4"
             variants={childVariants}
           >
-            <motion.a
-              href="https://forms.gle/fC9j6S43YqGQmBsj8"
-              target="_blank"
-              className="px-4 sm:px-6 py-2.5 sm:py-3 bg-gfgsc-green text-white rounded-lg font-semibold shadow-lg hover:bg-opacity-95 transform hover:scale-105 transition-all text-sm sm:text-base no-underline"
-              whileHover={buttonHover}
-            >
-              Join Chapter
-            </motion.a>
-            
-            <motion.a
-              href="/learning"
-              target="_blank"
+            {currentUser ? (
+              <motion.a
+                href="/dashboard"
+                className="px-4 sm:px-6 py-2.5 sm:py-3 bg-gfgsc-green text-white rounded-lg font-semibold shadow-lg hover:bg-opacity-95 transform hover:scale-105 transition-all text-sm sm:text-base no-underline"
+                whileHover={buttonHover}
+              >
+                👋 Welcome, {currentUser.displayName || currentUser.username}!
+              </motion.a>
+            ) : (
+              <motion.a
+                href="/join"
+                className="px-4 sm:px-6 py-2.5 sm:py-3 bg-gfgsc-green text-white rounded-lg font-semibold shadow-lg hover:bg-opacity-95 transform hover:scale-105 transition-all text-sm sm:text-base no-underline"
+                whileHover={buttonHover}
+              >
+                Join Chapter
+              </motion.a>
+            )}
+
+            <motion.button
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gfgsc-green text-gfgsc-green rounded-lg font-semibold hover:bg-green-50 dark:hover:bg-green-900 transform hover:scale-105 transition-all text-sm sm:text-base"
               whileHover={buttonHover}
             >
               Learn More
-            </motion.a>
-            
+            </motion.button>
+
           </motion.div>
 
           {/* Info Section */}
@@ -225,20 +254,20 @@ export default function Home() {
 
         {/* Right Side (Animated Gradients) */}
         <div className="relative flex flex-col justify-center items-center w-full md:w-1/2">
-          <div 
+          <div
             className="absolute -top-20 -left-30 sm:-top-30 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-green-200 dark:bg-green-700 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-gradientBefore">
           </div>
-          <div 
+          <div
             className="absolute -top-40 -left-30 sm:-top-60  w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-green-400 dark:bg-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-gradientAfter">
           </div>
         </div>
       </motion.div>
-      
+
       {/*second Section*/}
       <LazyComponent fallback={<LandingScrollSkeleton />}>
         <LazyLandingScroll />
       </LazyComponent>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="about" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mt-16 mb-16"
           variants={containerVariants}
@@ -479,29 +508,32 @@ export default function Home() {
       </div>
 
       {/* Upcoming Events Section */}
-      
 
 
 
-      {/* Testimonials Section */}
+
+      {/* Testimonials Carousel */}
+      <TestimonialsCarousel />
+
+      {/* CTA Section */}
       <section className="py-16">
-  <div className="container mx-auto px-4 text-center">
-    <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-      Want to Learn More?
-    </h2>
-    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-      Explore tutorials, coding challenges, and interview prep at GeeksforGeeks.
-    </p>
-    <a
-      href="https://www.geeksforgeeks.org"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block bg-gfgsc-green text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-800 transition"
-    >
-      Visit GeeksforGeeks
-    </a>
-  </div>
-</section>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+            Want to Learn More?
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+            Explore tutorials, coding challenges, and interview prep at GeeksforGeeks.
+          </p>
+          <a
+            href="https://www.geeksforgeeks.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gfgsc-green text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-800 transition"
+          >
+            Visit GeeksforGeeks
+          </a>
+        </div>
+      </section>
     </>
   )
 }

@@ -38,29 +38,17 @@ export function Navbar() {
 
         {/* Center - Navigation Links */}
         <div className="hidden md:flex space-x-6 text-gray-800 dark:text-gray-200">
-          <Link
-            href="/events"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
-          >
+          <Link href="/events" className="nav-link">
             Events
           </Link>
-          <Link
-            href="/about"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
-          >
+          <Link href="/about" className="nav-link">
             About
           </Link>
-          <Link
-            href="/learning"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
-          >
+          <Link href="/learning" className="nav-link">
             Learning
           </Link>
-          <Link
-            href="/forge"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
-          >
-             GeekForge
+          <Link href="/forge" className="nav-link">
+            GeekForge
           </Link>
         </div>
 
@@ -110,16 +98,15 @@ export function Navbar() {
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
-        className={`${
-          isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-        } md:hidden overflow-hidden transition-all duration-300`}
+        className={`${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+          } md:hidden overflow-hidden transition-all duration-300`}
         role="menu"
         aria-hidden={!isMenuOpen}
       >
         <div className="flex flex-col space-y-4 mt-4 text-gray-800 dark:text-gray-200">
           <Link
             href="/events"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
+            className="nav-link"
             role="menuitem"
             onClick={() => setIsMenuOpen(false)}
           >
@@ -127,7 +114,7 @@ export function Navbar() {
           </Link>
           <Link
             href="/about"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
+            className="nav-link"
             role="menuitem"
             onClick={() => setIsMenuOpen(false)}
           >
@@ -135,7 +122,7 @@ export function Navbar() {
           </Link>
           <Link
             href="/learning"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
+            className="nav-link"
             role="menuitem"
             onClick={() => setIsMenuOpen(false)}
           >
@@ -143,11 +130,11 @@ export function Navbar() {
           </Link>
           <Link
             href="/forge"
-            className="hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-full px-3 py-1 transition-all duration-200 focus:outline-none"
+            className="nav-link"
             role="menuitem"
             onClick={() => setIsMenuOpen(false)}
           >
-            The Forge
+            GeekForge
           </Link>
           <a
             href="https://www.geeksforgeeks.org/problem-of-the-day"

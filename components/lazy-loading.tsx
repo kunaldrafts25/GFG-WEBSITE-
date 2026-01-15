@@ -49,7 +49,7 @@ export const LandingScrollSkeleton = () => (
 )
 
 // Lazy loaded components
-export const LazyLandingScroll = lazy(() => import('./landing-scroll'))
+export const LazyLandingScroll = lazy(() => import('./landing-scroll-branding'))
 export const LazyMemberCard = lazy(() => import('./member-card').then(module => ({ default: module.MemberCard })))
 
 // Higher-order component for lazy loading with error boundary
@@ -59,8 +59,8 @@ interface LazyComponentProps {
   errorFallback?: React.ReactNode
 }
 
-export const LazyComponent: React.FC<LazyComponentProps> = ({ 
-  children, 
+export const LazyComponent: React.FC<LazyComponentProps> = ({
+  children,
   fallback = <div>Loading...</div>,
   errorFallback = <div>Failed to load component</div>
 }) => (
@@ -160,16 +160,15 @@ export const LazyImage: React.FC<LazyImageProps> = ({
           alt={alt}
           width={width}
           height={height}
-          className={`transition-opacity duration-300 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
           onLoad={() => setIsLoaded(true)}
           loading={priority ? 'eager' : 'lazy'}
         />
       )}
       {!isLoaded && (
-        <Skeleton 
-          className="absolute inset-0" 
+        <Skeleton
+          className="absolute inset-0"
           style={{ width: width || '100%', height: height || '100%' }}
         />
       )}

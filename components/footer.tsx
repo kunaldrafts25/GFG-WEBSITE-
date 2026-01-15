@@ -6,7 +6,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaGithub, FaWhatsapp, F
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { toast } from "@/components/ui/use-toast"
+import { toast } from "sonner"
 
 export function Footer() {
   const [name, setName] = useState('')
@@ -17,8 +17,7 @@ export function Footer() {
     e.preventDefault()
     // Here you would typically send the form data to your server
     console.log('Form submitted:', { name, email, message })
-    toast({
-      title: "Message Sent!",
+    toast.success("Message Sent!", {
       description: "Thank you for your message. We'll get back to you soon.",
     })
     setName('')
@@ -42,20 +41,20 @@ export function Footer() {
             </ul>
             <h3 className="text-lg font-semibold text-foreground mb-4">Connect With Us</h3>
             <div className="flex space-x-4 mb-6">
-            <a href="https://www.instagram.com/gfg_mitadt" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <FaInstagram className="text-3xl text-muted-foreground hover:text-primary transition-all" />
-            </a>
-            <a href="http://www.linkedin.com/in/gfgmitadt" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <FaLinkedin className="text-3xl text-muted-foreground hover:text-primary transition-all" />
-            </a>
-            <a href="https://chat.whatsapp.com/HkHoCm9Rfv6Cxgt4MOtm5K" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-              <FaWhatsapp className="text-3xl text-muted-foreground hover:text-primary transition-all" />
-            </a>
-            <a href="https://discord.gg/JCyKBXsh" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-              <FaDiscord className="text-3xl text-muted-foreground hover:text-primary transition-all" />
-            </a>
-            <a href="https://github.com/GeeksforGeeks-MITADT" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <FaGithub className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+              <a href="https://www.instagram.com/gfg_mitadt" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <FaInstagram className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+              </a>
+              <a href="http://www.linkedin.com/in/gfgmitadt" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <FaLinkedin className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+              </a>
+              <a href="https://chat.whatsapp.com/HkHoCm9Rfv6Cxgt4MOtm5K" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <FaWhatsapp className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+              </a>
+              <a href="https://discord.gg/JCyKBXsh" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                <FaDiscord className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+              </a>
+              <a href="https://github.com/GeeksforGeeks-MITADT" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <FaGithub className="text-3xl text-muted-foreground hover:text-primary transition-all" />
               </a>
             </div>
             <p className="text-muted-foreground">MIT-ADT University, Pune</p>
