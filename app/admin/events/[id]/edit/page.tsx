@@ -216,6 +216,52 @@ export default function EditEventPage() {
                                 <Input id="speakers" name="speakers" value={form.speakers} onChange={handleChange} placeholder="Speaker names" />
                             </div>
 
+                            {/* Poster Upload */}
+                            <div className="space-y-2">
+                                <Label>Event Poster</Label>
+                                <div className="flex flex-col gap-3">
+                                    {form.posterUrl && (
+                                        <div className="flex items-center gap-3 p-3 rounded-lg bg-zinc-50 dark:bg-zinc-900">
+                                            <img src={form.posterUrl} alt="Current poster" className="h-20 w-auto rounded object-cover" />
+                                            <div className="flex-1 text-sm text-muted-foreground truncate">{form.posterUrl}</div>
+                                        </div>
+                                    )}
+                                    <Input
+                                        id="posterFile"
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={async (e) => {
+                                            const file = e.target.files?.[0]
+                                            if (!file) return
+
+                                            const formData = new FormData()
+                                            formData.append('file', file)
+
+                                            try {
+                                                const token = getToken()
+                                                const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/upload`, {
+                                                    method: 'POST',
+                                                    headers: { 'Authorization': `Bearer ${token}` },
+                                                    body: formData
+                                                })
+
+                                                if (res.ok) {
+                                                    const data = await res.json()
+                                                    setForm(prev => ({ ...prev, posterUrl: data.url }))
+                                                    toast.success('Poster uploaded!')
+                                                } else {
+                                                    toast.error('Failed to upload poster')
+                                                }
+                                            } catch {
+                                                toast.error('Upload error')
+                                            }
+                                        }}
+                                        className="cursor-pointer"
+                                    />
+                                    <p className="text-xs text-muted-foreground">Upload a new image to replace the current poster</p>
+                                </div>
+                            </div>
+
                             <div className="space-y-2">
                                 <Label htmlFor="prerequisites">Prerequisites</Label>
                                 <Input id="prerequisites" name="prerequisites" value={form.prerequisites} onChange={handleChange} placeholder="What attendees should know" />
