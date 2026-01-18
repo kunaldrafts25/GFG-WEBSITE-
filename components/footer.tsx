@@ -1,113 +1,107 @@
 'use client'
 
-import { useState } from "react"
 import Link from "next/link"
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaGithub, FaWhatsapp, FaDiscord } from "react-icons/fa"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { toast } from "sonner"
+import { FaInstagram, FaLinkedin, FaGithub, FaWhatsapp, FaDiscord } from "react-icons/fa"
+import { ArrowRight, MapPin, Mail } from "lucide-react"
 
 export function Footer() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Here you would typically send the form data to your server
-    console.log('Form submitted:', { name, email, message })
-    toast.success("Message Sent!", {
-      description: "Thank you for your message. We'll get back to you soon.",
-    })
-    setName('')
-    setEmail('')
-    setMessage('')
-  }
-
   return (
-    <footer className="bg-background border-t">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
+    <footer className="bg-gradient-to-b from-background to-zinc-50 dark:from-background dark:to-zinc-950 border-t">
+      <div className="container mx-auto px-6 py-10">
+        {/* Main Footer Grid - 2 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+          {/* Brand Section */}
           <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">GeeksforGeeks Student Chapter</h2>
-            <p className="mb-4 text-muted-foreground">Empowering students with technical knowledge and practical skills.</p>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Quick Links</h3>
-            <ul className="space-y-2 mb-6">
-              <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
-              <li><Link href="/events" className="text-muted-foreground hover:text-primary transition-colors">Events</Link></li>
-              <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link></li>
-              <li><Link href="/learning" className="text-muted-foreground hover:text-primary transition-colors">Learning</Link></li>
-            </ul>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Connect With Us</h3>
-            <div className="flex space-x-4 mb-6">
-              <a href="https://www.instagram.com/gfg_mitadt" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <FaInstagram className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+            <h2 className="text-xl font-bold text-foreground mb-3">
+              GeeksforGeeks Student Chapter
+            </h2>
+            <p className="text-muted-foreground mb-4 leading-relaxed text-sm max-w-md">
+              A campus community empowering students with technical knowledge, practical skills, and opportunities to grow together.
+            </p>
+
+            {/* Social Icons */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              <a href="https://www.instagram.com/gfg_mitadt" target="_blank" rel="noopener noreferrer"
+                className="h-9 w-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 group" aria-label="Instagram">
+                <FaInstagram className="text-base group-hover:scale-110 transition-transform" />
               </a>
-              <a href="http://www.linkedin.com/in/gfgmitadt" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <FaLinkedin className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+              <a href="http://www.linkedin.com/in/gfgmitadt" target="_blank" rel="noopener noreferrer"
+                className="h-9 w-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 group" aria-label="LinkedIn">
+                <FaLinkedin className="text-base group-hover:scale-110 transition-transform" />
               </a>
-              <a href="https://chat.whatsapp.com/HkHoCm9Rfv6Cxgt4MOtm5K" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                <FaWhatsapp className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+              <a href="https://chat.whatsapp.com/HkHoCm9Rfv6Cxgt4MOtm5K" target="_blank" rel="noopener noreferrer"
+                className="h-9 w-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 group" aria-label="WhatsApp">
+                <FaWhatsapp className="text-base group-hover:scale-110 transition-transform" />
               </a>
-              <a href="https://discord.gg/JCyKBXsh" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-                <FaDiscord className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+              <a href="https://discord.gg/JCyKBXsh" target="_blank" rel="noopener noreferrer"
+                className="h-9 w-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 group" aria-label="Discord">
+                <FaDiscord className="text-base group-hover:scale-110 transition-transform" />
               </a>
-              <a href="https://github.com/GeeksforGeeks-MITADT" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <FaGithub className="text-3xl text-muted-foreground hover:text-primary transition-all" />
+              <a href="https://github.com/GeeksforGeeks-MITADT" target="_blank" rel="noopener noreferrer"
+                className="h-9 w-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300 group" aria-label="GitHub">
+                <FaGithub className="text-base group-hover:scale-110 transition-transform" />
               </a>
             </div>
-            <p className="text-muted-foreground">MIT-ADT University, Pune</p>
+
+            <div className="space-y-1 text-sm text-muted-foreground">
+              <p className="flex items-center gap-2">
+                <MapPin className="h-3.5 w-3.5" /> MIT-ADT University, Pune
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="h-3.5 w-3.5" /> gfg.mitadt@gmail.com
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Contact Us</h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-1 text-foreground">Name</label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1 text-foreground">Email</label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1 text-foreground">Message</label>
-                <Textarea
-                  id="message"
-                  placeholder="Your Message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  required
-                  className="w-full min-h-[100px]"
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                Send Message
-              </Button>
-            </form>
+
+          {/* Quick Links */}
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Explore</h3>
+              <ul className="space-y-2">
+                {[
+                  { href: "/", label: "Home" },
+                  { href: "/events", label: "Events" },
+                  { href: "/about", label: "About Us" },
+                  { href: "/learning", label: "Resources" },
+                ].map(link => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group">
+                      <ArrowRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Get Involved</h3>
+              <ul className="space-y-2">
+                {[
+                  { href: "/join", label: "Join Us" },
+                  { href: "/forge", label: "GeekForge" },
+                  { href: "/dashboard", label: "Dashboard" },
+                  { href: "/login", label: "Sign In" },
+                ].map(link => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group">
+                      <ArrowRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} GeeksforGeeks Student Chapter MIT-ADT. All rights reserved.
+
+        {/* Bottom Bar */}
+        <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800 text-center">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} GeeksforGeeks Student Chapter, MIT-ADT University. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
   )
 }
-

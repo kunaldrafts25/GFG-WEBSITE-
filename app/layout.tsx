@@ -6,6 +6,8 @@ import { Footer } from "@/components/footer"
 import { ErrorBoundary, PageErrorFallback } from "@/components/error-boundary"
 import { PWAInstallPrompt, AppUpdateNotification } from "@/components/pwa-components"
 import { baseMetadata, organizationStructuredData } from "@/lib/metadata"
+import { AuthProvider } from "@/contexts/auth-context"
+import { Toaster } from "sonner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -42,17 +44,20 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <ErrorBoundary>
-              <Navbar />
-            </ErrorBoundary>
-            <main id="main-content" className="flex-grow" tabIndex={-1}>
+            <AuthProvider>
               <ErrorBoundary>
-                {children}
+                <Navbar />
               </ErrorBoundary>
-            </main>
-            <ErrorBoundary>
-              <Footer />
-            </ErrorBoundary>
+              <main id="main-content" className="flex-grow" tabIndex={-1}>
+                <ErrorBoundary>
+                  {children}
+                </ErrorBoundary>
+              </main>
+              <ErrorBoundary>
+                <Footer />
+              </ErrorBoundary>
+              <Toaster richColors position="top-right" />
+            </AuthProvider>
           </ThemeProvider>
 
           {/* PWA Components */}

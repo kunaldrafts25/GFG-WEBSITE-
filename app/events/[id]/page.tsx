@@ -501,42 +501,63 @@ export default function EventDetailPage() {
                                     {/* ... Recap implementation similar to original but with improved Cards ... */}
                                     {hasRecap && (
                                         <div className="space-y-6">
+                                            {/* Event Summary */}
+                                            {event.recapSummary && (
+                                                <Card className="border-none shadow-sm bg-white dark:bg-zinc-900">
+                                                    <CardHeader><CardTitle>Event Summary</CardTitle></CardHeader>
+                                                    <CardContent>
+                                                        <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">{event.recapSummary}</p>
+                                                    </CardContent>
+                                                </Card>
+                                            )}
+
                                             {event.recapVideoUrl && (
                                                 <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-xl border border-zinc-200 dark:border-zinc-800">
                                                     <iframe src={event.recapVideoUrl.replace('watch?v=', 'embed/')} className="w-full h-full" allowFullScreen />
                                                 </div>
                                             )}
-                                            <div className="grid md:grid-cols-2 gap-6">
-                                                <Card className="border-none shadow-sm bg-white dark:bg-zinc-900">
-                                                    <CardHeader><CardTitle>Highlights</CardTitle></CardHeader>
-                                                    <CardContent>
-                                                        <ul className="space-y-3">
-                                                            {event.recapHighlights?.map((h, i) => (
-                                                                <li key={i} className="flex gap-3 items-start">
-                                                                    <div className="h-6 w-6 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-500 flex items-center justify-center flex-shrink-0 mt-0.5"><CheckCircle className="h-3.5 w-3.5" /></div>
-                                                                    <span>{h}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </CardContent>
-                                                </Card>
-                                                <Card className="border-none shadow-sm bg-white dark:bg-zinc-900">
-                                                    <CardHeader><CardTitle>Winners</CardTitle></CardHeader>
-                                                    <CardContent>
-                                                        <div className="space-y-4">
-                                                            {(event.winners as Winner[])?.map((w, i) => (
-                                                                <div key={i} className="flex items-center gap-4 p-3 rounded-lg bg-zinc-50 dark:bg-zinc-950/50 border border-zinc-100 dark:border-zinc-800">
-                                                                    <div className="text-2xl">{i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉'}</div>
-                                                                    <div>
-                                                                        <p className="font-bold">{w.name}</p>
-                                                                        <p className="text-xs text-muted-foreground">{w.position}</p>
-                                                                    </div>
+
+                                            {/* Only show grid if there's content */}
+                                            {(event.recapHighlights?.length || event.winners?.length) && (
+                                                <div className="grid md:grid-cols-2 gap-6">
+                                                    {/* Only show Highlights if there are any */}
+                                                    {event.recapHighlights && event.recapHighlights.length > 0 && (
+                                                        <Card className="border-none shadow-sm bg-white dark:bg-zinc-900">
+                                                            <CardHeader><CardTitle>Highlights</CardTitle></CardHeader>
+                                                            <CardContent>
+                                                                <ul className="space-y-3">
+                                                                    {event.recapHighlights.map((h, i) => (
+                                                                        <li key={i} className="flex gap-3 items-start">
+                                                                            <div className="h-6 w-6 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-500 flex items-center justify-center flex-shrink-0 mt-0.5"><CheckCircle className="h-3.5 w-3.5" /></div>
+                                                                            <span>{h}</span>
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            </CardContent>
+                                                        </Card>
+                                                    )}
+
+                                                    {/* Only show Winners if there are any */}
+                                                    {event.winners && event.winners.length > 0 && (
+                                                        <Card className="border-none shadow-sm bg-white dark:bg-zinc-900">
+                                                            <CardHeader><CardTitle>Winners</CardTitle></CardHeader>
+                                                            <CardContent>
+                                                                <div className="space-y-4">
+                                                                    {(event.winners as Winner[]).map((w, i) => (
+                                                                        <div key={i} className="flex items-center gap-4 p-3 rounded-lg bg-zinc-50 dark:bg-zinc-950/50 border border-zinc-100 dark:border-zinc-800">
+                                                                            <div className="text-2xl">{i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉'}</div>
+                                                                            <div>
+                                                                                <p className="font-bold">{w.name}</p>
+                                                                                <p className="text-xs text-muted-foreground">{w.position}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    ))}
                                                                 </div>
-                                                            ))}
-                                                        </div>
-                                                    </CardContent>
-                                                </Card>
-                                            </div>
+                                                            </CardContent>
+                                                        </Card>
+                                                    )}
+                                                </div>
+                                            )}
                                         </div>
                                     )}
                                 </TabsContent>

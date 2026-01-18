@@ -96,7 +96,7 @@ export default function JoinPage() {
                                     id="email"
                                     name="email"
                                     type="email"
-                                    placeholder="you@example.com"
+                                    placeholder=""
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
@@ -112,7 +112,7 @@ export default function JoinPage() {
                                         id="username"
                                         name="username"
                                         type="text"
-                                        placeholder="johndoe"
+                                        placeholder=""
                                         value={formData.username}
                                         onChange={handleChange}
                                         required
@@ -125,7 +125,7 @@ export default function JoinPage() {
                                         id="displayName"
                                         name="displayName"
                                         type="text"
-                                        placeholder="John Doe"
+                                        placeholder=""
                                         value={formData.displayName}
                                         onChange={handleChange}
                                         required

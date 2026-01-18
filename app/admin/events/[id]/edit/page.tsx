@@ -33,6 +33,8 @@ export default function EditEventPage() {
         location: '',
         posterUrl: '',
         themeColor: '#2F8D46',
+        registrationCount: 0,
+        whatsappLink: '',
     })
 
     useEffect(() => {
@@ -62,6 +64,8 @@ export default function EditEventPage() {
                     location: event.location || '',
                     posterUrl: event.posterUrl || '',
                     themeColor: event.themeColor || '#2F8D46',
+                    registrationCount: event.registrationCount || 0,
+                    whatsappLink: event.whatsappLink || '',
                 })
             } catch {
                 toast.error('Failed to load event')
@@ -95,6 +99,8 @@ export default function EditEventPage() {
             location: form.location,
             posterUrl: form.posterUrl,
             themeColor: form.themeColor,
+            registrationCount: parseInt(String(form.registrationCount)) || 0,
+            whatsappLink: form.whatsappLink || null,
         }
 
         try {
@@ -213,6 +219,33 @@ export default function EditEventPage() {
                             <div className="space-y-2">
                                 <Label htmlFor="prerequisites">Prerequisites</Label>
                                 <Input id="prerequisites" name="prerequisites" value={form.prerequisites} onChange={handleChange} placeholder="What attendees should know" />
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="registrationCount">Registration Count (Manual Override)</Label>
+                                <Input
+                                    id="registrationCount"
+                                    name="registrationCount"
+                                    type="number"
+                                    min="0"
+                                    value={form.registrationCount}
+                                    onChange={handleChange}
+                                    placeholder="0"
+                                />
+                                <p className="text-xs text-muted-foreground">Override the displayed registration count. Actual registrations are not affected.</p>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="whatsappLink">WhatsApp Community Link (optional)</Label>
+                                <Input
+                                    id="whatsappLink"
+                                    name="whatsappLink"
+                                    type="url"
+                                    value={form.whatsappLink}
+                                    onChange={handleChange}
+                                    placeholder="https://chat.whatsapp.com/..."
+                                />
+                                <p className="text-xs text-muted-foreground">Link to event-specific WhatsApp group or community</p>
                             </div>
 
                             <div className="flex gap-4">

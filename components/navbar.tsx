@@ -6,11 +6,14 @@ import { FaArrowRight } from 'react-icons/fa'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { useTheme } from 'next-themes'
-import { Moon, Sun } from 'lucide-react'
+import { Moon, Sun, User } from 'lucide-react'
+import { useAuth } from '@/contexts/auth-context'
+import { NotificationBell } from '@/components/notification-bell'
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
+  const { isAuthenticated } = useAuth()
 
   return (
     <nav
@@ -66,6 +69,19 @@ export function Navbar() {
               <FaArrowRight aria-hidden="true" />
             </a>
           </div>
+
+          {/* Authenticated User Actions */}
+          {isAuthenticated && (
+            <div className="hidden md:flex items-center space-x-2">
+              <NotificationBell />
+              <Link href="/dashboard">
+                <Button variant="ghost" size="icon" className="rounded-full w-8 h-8">
+                  <User className="h-4 w-4" />
+                  <span className="sr-only">Profile</span>
+                </Button>
+              </Link>
+            </div>
+          )}
 
           <Button
             variant="ghost"

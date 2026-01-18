@@ -26,6 +26,7 @@ interface EventFormData {
   posterUrl: string
   imageUrls: string
   maxParticipants: string
+  whatsappLink: string
 }
 
 export default function AddEventPage() {
@@ -45,6 +46,7 @@ export default function AddEventPage() {
     posterUrl: '',
     imageUrls: '',
     maxParticipants: '',
+    whatsappLink: '',
   })
   const [submitting, setSubmitting] = useState(false)
 
@@ -85,6 +87,7 @@ export default function AddEventPage() {
       posterUrl: form.posterUrl,
       imageUrls: form.imageUrls ? form.imageUrls.split(',').map(url => url.trim()).filter(Boolean) : [],
       maxParticipants: form.maxParticipants ? parseInt(form.maxParticipants) : null,
+      whatsappLink: form.whatsappLink || null,
     }
 
     try {
@@ -283,7 +286,7 @@ export default function AddEventPage() {
                       if (!file) return
 
                       const formData = new FormData()
-                      formData.append('poster', file)
+                      formData.append('file', file)
 
                       try {
                         const token = getToken()
@@ -340,6 +343,20 @@ export default function AddEventPage() {
                   onChange={handleChange}
                   placeholder="https://forms.google.com/... (optional, in-app registration is default)"
                 />
+              </div>
+
+              {/* WhatsApp Community Link */}
+              <div className="space-y-2">
+                <Label htmlFor="whatsappLink">WhatsApp Community Link (optional)</Label>
+                <Input
+                  id="whatsappLink"
+                  name="whatsappLink"
+                  type="url"
+                  value={form.whatsappLink}
+                  onChange={handleChange}
+                  placeholder="https://chat.whatsapp.com/..."
+                />
+                <p className="text-xs text-muted-foreground">Link to event-specific WhatsApp group or community</p>
               </div>
 
               {/* Submit */}
